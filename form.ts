@@ -14,27 +14,26 @@ const age = document.getElementById("age") as HTMLInputElement;
 const gender = document.getElementById("gender") as HTMLInputElement;
 const searching = document.getElementById("searching") as HTMLInputElement;
 
+// Waiting for the API to be ready
 WA.onInit()
   .then(() => {
     console.log("Scripting API ready");
     console.log(WA.state.players);
 
-    saveButton.addEventListener("click", (e) => {
+    saveButton.addEventListener("click", () => {
       if (firstName.value === "" || lastName.value === "" || email.value === "") {
         alert("Veuillez remplir les champs obligatoires");
       } else {
         alert("Inscription réussie");
-
-        WA.player.state.id = Date.now() + Math.random();
-        WA.player.state.status = true;
         WA.player.state.firstName = firstName.value;
+        WA.player.state.status = true;
         WA.player.state.lastName = lastName.value;
         WA.player.state.phone = phone.value;
         WA.player.state.email = email.value;
         WA.player.state.age = age.value;
         WA.player.state.gender = gender.value;
         WA.player.state.searching = searching.value;
-        WA.player.state.id = WA.state.loadVariable("indexPlayers");
+        // WA.player.state.id = WA.state.loadVariable('indexPlayers');
 
         WA.state.saveVariable("players", {
           ...WA.state.loadVariable("players"),
