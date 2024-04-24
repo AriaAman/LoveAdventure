@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://play.workadventu.re/iframe_api.js"></script>
         <script type="module" src="./form.ts"></script>
-    <title>Form</title>
+            <title>Form</title>
     <style>
         /* FORM */
-        #formulaireInscription {
+        #bg-white {
             background-color: white;
         }
         form {
@@ -38,12 +38,13 @@
     </style>
 </head>
 <body>
+    <div id="bg-white">
     <div class="logo">
         <a href="https://workadventu.re/" target="_blank" title="Workadventure">
             <img src="/images/logo.svg" alt="WorkAdventure logo" />
         </a>
     </div>
-    <div id="formulaireInscription"   >
+    <div id="formulaireInscription">
         <form action="#" method="POST"> 
             <label for="firstName">Prénom:</label>
             <input type="text" id="firstName" name="firstName" required>
@@ -66,6 +67,6 @@
             <input id="inscrire" type="submit" value="S'inscrire">
         </form>
     </div>
-
+</div>
 </body>
 </html>
