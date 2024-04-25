@@ -50,7 +50,7 @@ WA.onInit()
     });
 
     WA.room.area.onEnter("to-date").subscribe(() => {
-      if (WA.state.loadVariable("index") === WA.player.state.loadVariable("id")) {
+      if (WA.state.loadVariable("validatedIndex") === WA.player.state.loadVariable("id")) {
         WA.nav.goToRoom("#from-queue");
       }
     });
@@ -106,7 +106,7 @@ WA.onInit()
     });
 
     WA.room.area.onEnter("validatePlayer").subscribe(() => {
-      console.log(WA.state.players);
+      WA.state.saveVariable("validatedIndex", WA.state.loadVariable("index"));
 
       const hasPlayers =
         typeof WA.state.loadVariable("players") === "object" && WA.state.loadVariable("index") in WA.state.players;
