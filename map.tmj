@@ -531,17 +531,6 @@
                  "y":449
                 }, 
                 {
-                 "height":39.697,
-                 "id":24,
-                 "name":"nextPlayer",
-                 "rotation":0,
-                 "type":"area",
-                 "visible":true,
-                 "width":50.2727,
-                 "x":315.280316666667,
-                 "y":380.984833333333
-                }, 
-                {
                  "height":62,
                  "id":25,
                  "name":"dateZone",
@@ -580,20 +569,9 @@
                  "rotation":0,
                  "type":"area",
                  "visible":true,
-                 "width":222.2727,
-                 "x":165.61365,
+                 "width":48.4436319169483,
+                 "x":247.699598816997,
                  "y":373.568166666667
-                }, 
-                {
-                 "height":39.697,
-                 "id":27,
-                 "name":"validatePlayer",
-                 "rotation":0,
-                 "type":"area",
-                 "visible":true,
-                 "width":50.2727,
-                 "x":183.000781820377,
-                 "y":379.685782955094
                 }, 
                 {
                  "height":111.667,

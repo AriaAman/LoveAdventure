@@ -1,7 +1,6 @@
 /// <reference types="@workadventure/iframe-api-typings" />
 
 import { bootstrapExtra } from "@workadventure/scripting-api-extra";
-import { log } from "console";
 
 console.log("Script started successfully");
 
@@ -9,15 +8,16 @@ let currentPopup: any = undefined;
 let formWebsite: any = undefined;
 let timer: any = undefined;
 
-let index: string = "azeaze";
 console.log("on vient de load !!!!!!!!!!!");
 
 WA.onInit()
   .then(() => {
-    //
-    WA.player.state.saveVariable("id", 2);
+    WA.player.state.saveVariable("id", 1);
+    WA.player.state.saveVariable("status", false);
 
     WA.room.area.onEnter("registrationArea").subscribe(async () => {
+      console.log(WA.player.state.status);
+
       if (WA.player.state.status == false || WA.player.state.status == undefined) {
         WA.controls.disablePlayerControls();
         console.log("Entering visibleNote layer");
@@ -99,38 +99,8 @@ WA.onInit()
       timer.close();
     });
 
-    //code Nicolas
-    WA.room.area.onEnter("showPlayer").subscribe(() => {
-      openPopup();
-      console.log(WA.state.loadVariable("index"), WA.player.state.loadVariable("id"));
-    });
-
-    WA.room.area.onEnter("validatePlayer").subscribe(() => {
-      WA.state.saveVariable("validatedIndex", WA.state.loadVariable("index"));
-
-      const hasPlayers =
-        typeof WA.state.loadVariable("players") === "object" && WA.state.loadVariable("index") in WA.state.players;
-
-      if (hasPlayers) {
-        const playerName =
-          WA.state.players[WA.state.loadVariable("index")].firstName +
-          WA.state.players[WA.state.loadVariable("index")].lastName;
-        WA.ui.openPopup("validatePlayerPopup", `${playerName}, on y va !`, []);
-      } else {
-        WA.ui.openPopup("validatePlayerPopup", "Il n'y a pas de prétendant(e)", []);
-      }
-    });
-
-    WA.room.area.onEnter("nextPlayer").subscribe(() => {
-      closePopup();
-      if (WA.state.loadVariable("index") in WA.state.players) {
-        WA.state.saveVariable("index", WA.state.loadVariable("index") + 1);
-      }
-      openPopup();
-    });
-
+    WA.room.area.onEnter("showPlayer").subscribe(openPopup);
     WA.room.area.onLeave("showPlayer").subscribe(closePopup);
-    //fin code nicolas
 
     bootstrapExtra()
       .then(() => {
@@ -141,6 +111,8 @@ WA.onInit()
   .catch((e) => console.error(e));
 
 function closePopup() {
+  console.log(WA.player.state.loadVariable("id"), WA.state.loadVariable("validatedIndex"));
+
   if (currentPopup !== undefined) {
     currentPopup.close();
     currentPopup = undefined;
@@ -162,7 +134,39 @@ function openPopup() {
     currentPopup = WA.ui.openPopup(
       "playersPopup",
       displayNotes(WA.state.loadVariable("players")[WA.state.loadVariable("index")]),
-      []
+      [
+        {
+          label: "Validation",
+          className: "primary",
+          callback: () => {
+            WA.state.saveVariable("validatedIndex", WA.state.loadVariable("index"));
+
+            const hasPlayers =
+              typeof WA.state.loadVariable("players") === "object" &&
+              WA.state.loadVariable("index") in WA.state.players;
+
+            if (hasPlayers) {
+              const playerName =
+                WA.state.players[WA.state.loadVariable("index")].firstName +
+                WA.state.players[WA.state.loadVariable("index")].lastName;
+              WA.ui.openPopup("validatePlayerPopup", `${playerName}, on y va !`, []);
+            } else {
+              WA.ui.openPopup("validatePlayerPopup", "Il n'y a pas de prétendant(e)", []);
+            }
+          },
+        },
+        {
+          label: "Suivant",
+          className: "primary",
+          callback: () => {
+            closePopup();
+            if (WA.state.loadVariable("index") in WA.state.players) {
+              WA.state.saveVariable("index", WA.state.loadVariable("index") + 1);
+            }
+            openPopup();
+          },
+        },
+      ]
     );
   } catch (e) {
     currentPopup = WA.ui.openPopup("playersPopup", "Il n'y a pas de prétendant(e)", []);
