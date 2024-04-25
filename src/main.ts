@@ -1,6 +1,7 @@
 /// <reference types="@workadventure/iframe-api-typings" />
 
 import { bootstrapExtra } from "@workadventure/scripting-api-extra";
+import { log } from "console";
 
 console.log("Script started successfully");
 
@@ -16,37 +17,7 @@ WA.onInit()
     WA.player.state.saveVariable("status", false); // enlever pour prod
 
     WA.room.area.onEnter("registrationArea").subscribe(async () => {
-      console.log(WA.player.state.status);
-
-      if (WA.player.state.status == false || WA.player.state.status == undefined) {
-        WA.controls.disablePlayerControls();
-        console.log("Entering visibleNote layer");
-
-        formWebsite = await WA.ui.website.open({
-          url: "./form.html",
-          position: {
-            vertical: "top",
-            horizontal: "middle",
-          },
-          size: {
-            height: "60vh",
-            width: "50vw",
-          },
-          margin: {
-            top: "10vh",
-          },
-          allowApi: true,
-        });
-
-        var id = setInterval(() => {
-          if (WA.player.state.status) {
-            formWebsite.close();
-            clearInterval(id);
-          }
-        }, 1000);
-      } else {
-        console.log("Already registered");
-      }
+      registration();
     });
 
     WA.room.area.onEnter("to-date").subscribe(() => {
@@ -55,7 +26,48 @@ WA.onInit()
       }
     });
 
+    WA.room.area.onEnter("displayPretendantInfosForPretendant").subscribe(() => {
+      if (!WA.player.tags.includes("pretendant")) {
+        return;
+      }
+      try {
+        currentPopup = WA.ui.openPopup(
+          "displayPretendantInfosPopup",
+          displayNotes(WA.state.loadVariable("pretendantInfos")),
+          []
+        );
+      } catch (e) {
+        currentPopup = WA.ui.openPopup("displayPretendantInfosPopup", "Infos pas encore disponibles", [
+          {
+            label: "Inscription",
+            className: "primary",
+            callback: async () => {
+              registration();
+            },
+          },
+        ]);
+      }
+    });
+
+    WA.room.area.onEnter("displayPretendantInfos").subscribe(() => {
+      try {
+        currentPopup = WA.ui.openPopup(
+          "displayPretendantInfosPopup",
+          displayNotes(WA.state.loadVariable("pretendantInfos")),
+          []
+        );
+      } catch (e) {
+        currentPopup = WA.ui.openPopup("displayPretendantInfosPopup", "Infos pas encore disponibles", []);
+      }
+    });
+
+    WA.room.area.onLeave("displayPretendantInfos").subscribe(closePopup);
+
     WA.room.area.onLeave("registrationArea").subscribe(() => {
+      formWebsite.close();
+    });
+
+    WA.room.area.onLeave("displayPretendantInfos").subscribe(() => {
       formWebsite.close();
     });
 
@@ -128,6 +140,9 @@ String.prototype.capitalize = function () {
 };
 
 function openPopup() {
+  if (!WA.player.tags.includes("pretendant")) {
+    return;
+  }
   try {
     currentPopup = WA.ui.openPopup(
       "playersPopup",
@@ -182,6 +197,36 @@ function displayNotes(player: { firstName: string; lastName: string; age: string
     " cherche " +
     player.searching
   );
+}
+
+async function registration() {
+  if (WA.player.state.status == false || WA.player.state.status == undefined) {
+    WA.controls.disablePlayerControls();
+    console.log("Entering visibleNote layer");
+
+    formWebsite = await WA.ui.website.open({
+      url: "./form.html",
+      position: {
+        vertical: "top",
+        horizontal: "middle",
+      },
+      size: {
+        height: "60vh",
+        width: "50vw",
+      },
+      margin: {
+        top: "10vh",
+      },
+      allowApi: true,
+    });
+
+    var id = setInterval(() => {
+      if (WA.player.state.status) {
+        formWebsite.close();
+        clearInterval(id);
+      }
+    }, 1000);
+  }
 }
 
 String.prototype.capitalize = function () {
