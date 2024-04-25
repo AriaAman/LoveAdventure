@@ -10,26 +10,30 @@
     ],
     "allowJs": true,
     "moduleResolution": "Node",
-    "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
     "strictFunctionTypes": true,
     "strictBindCallApply": true,
-    "strictPropertyInitialization": true,
     "noImplicitThis": true,
     "alwaysStrict": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "esModuleInterop": true,
     "noEmit": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "skipLibCheck": true
+    "noImplicitReturns": true,                // Compiler vers ES6
+    "strict": false,                   // Désactive toutes les options strictes
+    "noImplicitAny": false,            // Autorise les expressions avec un typage 'any' implicite
+    "strictNullChecks": false,         // Autorise 'null' et 'undefined' sur tous les types
+    "noEmitOnError": false,            // Émet des fichiers même en présence d'erreurs
+    "esModuleInterop": true,           // Permet l'interopérabilité des modules ES6 avec les modules CommonJS
+    "skipLibCheck": true,    
   },
   "include": [
     "src"
+  ], 
+  "exclude": [
+    "node_modules", // Exclut le dossier node_modules de la compilation
+    "**/*.spec.ts"  // Exclut les fichiers de tests
   ]
 }

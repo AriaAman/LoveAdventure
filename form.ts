@@ -11,14 +11,14 @@ const email = document.getElementById("email") as HTMLInputElement;
 const age = document.getElementById("age") as HTMLInputElement;
 const gender = document.getElementById("gender") as HTMLInputElement;
 const searching = document.getElementById("searching") as HTMLInputElement;
-
+const indexPlayers = WA.state.loadVariable("indexPlayers") as number;
 // Waiting for the API to be ready
 WA.onInit()
   .then(() => {
     console.log("Scripting API ready");
     console.log(WA.state.players);
 
-    saveButton.addEventListener("click", () => {
+    saveButton.addEventListener("click", (e) => {
       if (firstName.value === "" || lastName.value === "" || email.value === "") {
         alert("Veuillez remplir les champs obligatoires");
       } else {
@@ -41,23 +41,10 @@ WA.onInit()
           WA.player.state.email = email.value;
           WA.player.state.age = age.value;
           WA.player.state.gender = gender.value;
-          WA.player.state.searching = searching.value;
-          // WA.player.state.id = WA.state.loadVariable('indexPlayers'); // decommenter pour prod
-
-          WA.state.saveVariable("players", {
-            ...WA.state.loadVariable("players"),
-            [WA.state.loadVariable("indexPlayers")]: {
-              firstName: WA.player.state.firstName,
-              lastName: WA.player.state.lastName,
-              age: WA.player.state.age,
-              gender: WA.player.state.gender,
-              searching: WA.player.state.searching,
-              email: WA.player.state.email,
-              phone: WA.player.state.phone,
-            },
-          });
-          WA.state.saveVariable("indexPlayers", WA.state.loadVariable("indexPlayers") + 1);
+        WA.state.saveVariable("indexPlayers", indexPlayers + 1);
         }
+        
+        WA.state.saveVariable("indexPlayers", indexPlayers + 1);
         WA.controls.restorePlayerControls();
         e.preventDefault();
       }
