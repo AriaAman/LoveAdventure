@@ -1,7 +1,6 @@
 /// <reference types="@workadventure/iframe-api-typings" />
 
 import { bootstrapExtra } from "@workadventure/scripting-api-extra";
-import { log } from "console";
 
 console.log("Script started successfully");
 
@@ -10,7 +9,6 @@ let formWebsite: any = undefined;
 let timer: any = undefined;
 
 
-let index: string = "azeaze";
 
 WA.onInit()
   .then(async () => {
@@ -50,7 +48,7 @@ WA.onInit()
       try {
         currentPopup = WA.ui.openPopup(
           "displayPretendantInfosPopup",
-          displayNotes(WA.state.loadVariable("pretendantInfos")),
+          displayNotes(WA.state.loadVariable("pretendantInfos") as any),
           []
         );
       } catch (e) {
@@ -70,7 +68,7 @@ WA.onInit()
       try {
         currentPopup = WA.ui.openPopup(
           "displayPretendantInfosPopup",
-          displayNotes(WA.state.loadVariable("pretendantInfos")),
+          displayNotes(WA.state.loadVariable("pretendantInfos") as any),
           []
         );
       } catch (e) {
@@ -130,7 +128,39 @@ WA.onInit()
       timer.close();
     });
 
-    WA.room.area.onEnter("showPlayer").subscribe(openPopup);
+    //code Nicolas
+    WA.room.area.onEnter("showPlayer").subscribe(() => {
+      openPopup();
+      console.log(WA.state.loadVariable("index"), WA.player.state.loadVariable("id"));
+    });
+
+    WA.room.area.onEnter("validatePlayer").subscribe(() => {
+      WA.state.saveVariable("validatedIndex", WA.state.loadVariable("index"));
+
+      const index = WA.state.loadVariable("index") as number;
+      const players = WA.state.loadVariable("players") as any;
+      const hasPlayers =
+        typeof players === "object" && index in players;
+
+    
+      if (hasPlayers) {
+        const playerName =
+            players[index.toString()].firstName +
+            players[index].lastName;
+        WA.ui.openPopup("validatePlayerPopup", `${playerName}, on y va !`, []);
+      } else {
+        WA.ui.openPopup("validatePlayerPopup", "Il n'y a pas de prétendant(e)", []);
+      }
+    });
+
+    WA.room.area.onEnter("nextPlayer").subscribe(() => {
+        closePopup();
+        if ((WA.state.loadVariable("index") as any) in (WA.state.players as any)) {
+            WA.state.saveVariable("index", Number(WA.state.loadVariable("index")) + 1);
+        }
+        openPopup();
+    });
+
     WA.room.area.onLeave("showPlayer").subscribe(closePopup);
 
     bootstrapExtra()
@@ -165,39 +195,42 @@ function openPopup() {
   try {
     currentPopup = WA.ui.openPopup(
       "playersPopup",
-      displayNotes(WA.state.loadVariable("players")[WA.state.loadVariable("index")]),
+
+      displayNotes(WA.state.loadVariable("players")[WA.state.loadVariable("index") as any]),
       [
         {
           label: "Validation",
           className: "primary",
-          callback: () => {
-            WA.state.saveVariable("validatedIndex", WA.state.loadVariable("index"));
+        callback: () => {
+                WA.state.saveVariable("validatedIndex", WA.state.loadVariable("index"));
 
-            const hasPlayers =
-              typeof WA.state.loadVariable("players") === "object" &&
-              WA.state.loadVariable("index") in WA.state.players;
+                const hasPlayers =
+                    typeof WA.state.loadVariable("players") === "object" &&
+                    (WA.state.loadVariable("index") as any) in (WA.state.players as any);
 
-            if (hasPlayers) {
-              const playerName =
-                WA.state.players[WA.state.loadVariable("index")].firstName +
-                WA.state.players[WA.state.loadVariable("index")].lastName;
-              WA.ui.openPopup("validatePlayerPopup", `${playerName}, on y va !`, []);
-            } else {
-              WA.ui.openPopup("validatePlayerPopup", "Il n'y a pas de prétendant(e)", []);
-            }
-          },
+                if (hasPlayers) {
+                    const index = Number(WA.state.loadVariable("index"));
+                    const playerName =
+                        WA.state.players[index].firstName +
+                        WA.state.players[index].lastName;
+                    WA.ui.openPopup("validatePlayerPopup", `${playerName}, on y va !`, []);
+                } else {
+                    WA.ui.openPopup("validatePlayerPopup", "Il n'y a pas de prétendant(e)", []);
+                }
+            },
         },
         {
           label: "Suivant",
           className: "primary",
-          callback: () => {
+        callback: () => {
             closePopup();
-            if (WA.state.loadVariable("index") in WA.state.players) {
-              WA.state.saveVariable("index", WA.state.loadVariable("index") + 1);
+            const index = WA.state.loadVariable("index") as string | number;
+            if (index in (WA.state.players as object)) {
+                WA.state.saveVariable("index", Number(index) + 1);
             }
             openPopup();
-          },
         },
+    },
       ]
     );
   } catch (e) {
