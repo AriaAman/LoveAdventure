@@ -36,7 +36,7 @@
             background-color: #0056b3;
         }
     </style>
-  <script type="module" crossorigin src="./assets/form-fb6596b8.js"></script>
+  <script type="module" crossorigin src="./assets/form-02bf87e3.js"></script>
 </head>
 <body>
     <div id="bg-white">
@@ -61,9 +61,24 @@
     
             <label for="email">E-mail:</label>
             <input type="email" id="email" name="email" required>
-    
-            <label for="password">Mot de passe:</label>
-            <input type="password" id="password" name="password" required minlength="8">
+
+            <label for="email">Age</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="gender">Je suis</label>
+            <select id="gender" name="gender" required>
+                <option value="homme">Homme</option>
+                <option value="femme">Femme</option>
+                <option value="autre">Autre</option>
+            </select>
+
+            <label for="searching">Je cherche</label>
+            <select id="searching" name="searching" required>
+                <option value="homme">Homme</option>
+                <option value="femme">Femme</option>
+                <option value="autre">Autre</option>
+            </select>
+
     
             <input id="inscrire" type="submit" value="S'inscrire">
         </form>
