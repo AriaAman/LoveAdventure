@@ -33,7 +33,7 @@ WA.onInit()
         WA.player.state.age = age.value;
         WA.player.state.gender = gender.value;
         WA.player.state.searching = searching.value;
-        // WA.player.state.id = WA.state.loadVariable('indexPlayers');
+        // WA.player.state.id = WA.state.loadVariable('indexPlayers'); // decommenter pour prod
 
         WA.state.saveVariable("players", {
           ...WA.state.loadVariable("players"),
