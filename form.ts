@@ -24,7 +24,7 @@ WA.onInit()
       } else {
         alert("Inscription réussie");
         WA.player.state.firstName = firstName.value;
-        WA.player.state.status = true;
+        //WA.player.state.status = true;
         WA.player.state.lastName = lastName.value;
         WA.player.state.phone = phone.value;
         WA.player.state.email = email.value;
