@@ -570,8 +570,8 @@
                  "type":"area",
                  "visible":true,
                  "width":187,
-                 "x":546.5,
-                 "y":76.5
+                 "x":517.5,
+                 "y":89.5
                 }, 
                 {
                  "height":48.697,
@@ -710,6 +710,40 @@
                  "width":1,
                  "x":84.4830999517141,
                  "y":0.862868179623371
+                }, 
+                {
+                 "height":32,
+                 "id":40,
+                 "name":"ejectZone",
+                 "properties":[
+                        {
+                         "name":"start",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":32,
+                 "x":770,
+                 "y":130.5
+                }, 
+                {
+                 "height":59,
+                 "id":41,
+                 "name":"testZone",
+                 "properties":[
+                        {
+                         "name":"start",
+                         "type":"bool",
+                         "value":false
+                        }],
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":80,
+                 "x":875,
+                 "y":129
                 }],
          "offsetx":0,
          "offsety":2.5,
@@ -794,7 +828,7 @@
          "y":0
         }],
  "nextlayerid":63,
- "nextobjectid":39,
+ "nextobjectid":42,
  "orientation":"orthogonal",
  "properties":[
         {

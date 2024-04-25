@@ -10,11 +10,33 @@ let formWebsite: any = undefined;
 let timer: any = undefined;
 
 let index: string = "azeaze";
-console.log("on vient de load !!!!!!!!!!!");
 
 WA.onInit()
   .then(() => {
-    //
+
+    WA.room.area.onEnter("testZone").subscribe((e) => {
+
+        WA.ui.actionBar.addButton({
+            id: 'kick-btn',
+            label: 'KICK',
+            callback: (event) => {
+                console.log('Button clicked', event);
+                console.log('Player ID', e);
+                console.log('Player ID', WA.player.state.loadVariable("id"));
+                console.log('Player ID', WA.state.loadVariable("index"));
+                if(WA.player.state.loadVariable("id") != WA.state.loadVariable("index")){
+                    WA.nav.goToRoom("#ejectZone");
+                }
+            //  WA.ui.actionBar.removeButton('kick-btn');
+            }
+        });
+      });
+
+      WA.room.area.onLeave("testZone").subscribe(() => {
+        WA.ui.actionBar.removeButton('kick-btn');
+      });
+
+    
     WA.player.state.saveVariable("id", 2);
 
     WA.room.area.onEnter("registrationArea").subscribe(async () => {
@@ -93,6 +115,8 @@ WA.onInit()
         },
         allowApi: true,
       });
+
+       
     });
 
     WA.room.area.onLeave("door-enter").subscribe(() => {

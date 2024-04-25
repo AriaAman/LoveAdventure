@@ -1,7 +1,5 @@
 /// <reference types="@workadventure/iframe-api-typings" />
 
-import { closeForm } from "./src/main.ts";
-
 console.log("Script started successfully");
 
 const saveButton = document.getElementById("inscrire") as HTMLButtonElement;
