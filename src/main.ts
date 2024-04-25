@@ -12,8 +12,8 @@ console.log("on vient de load !!!!!!!!!!!");
 
 WA.onInit()
   .then(() => {
-    WA.player.state.saveVariable("id", 1);
-    WA.player.state.saveVariable("status", false);
+    WA.player.state.saveVariable("id", 1); // enlever pour prod
+    WA.player.state.saveVariable("status", false); // enlever pour prod
 
     WA.room.area.onEnter("registrationArea").subscribe(async () => {
       console.log(WA.player.state.status);
