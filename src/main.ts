@@ -111,8 +111,6 @@ WA.onInit()
   .catch((e) => console.error(e));
 
 function closePopup() {
-  console.log(WA.player.state.loadVariable("id"), WA.state.loadVariable("validatedIndex"));
-
   if (currentPopup !== undefined) {
     currentPopup.close();
     currentPopup = undefined;
