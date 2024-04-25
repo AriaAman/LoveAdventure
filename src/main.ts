@@ -169,6 +169,16 @@ function closePopup(){
     }
 }
 
+declare global {
+    interface String {
+        capitalize(): string;
+    }
+}
+
+String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+};
+
 function openPopup() {
     try {
         currentPopup = WA.ui.openPopup("playersPopup", displayNotes(players[index]), []);
@@ -181,9 +191,7 @@ function displayNotes(player: {name: string, age: string, gender: string, search
     return player.name + ", " + player.age + " ans\n" + player.gender.capitalize() + " cherche " + player.searching
 }
 
-String.prototype.capitalize = function() {
-    return this.charAt(0).toUpperCase() + this.slice(1);
-};
+
 
 
 export {};
