@@ -9,6 +9,7 @@ let currentPopup: any = undefined;
 let formWebsite: any = undefined;
 let timer: any = undefined;
 
+
 let index: string = "azeaze";
 
 WA.onInit()
@@ -33,35 +34,7 @@ WA.onInit()
     WA.player.state.saveVariable("status", false);
 
     WA.room.area.onEnter("registrationArea").subscribe(async () => {
-      if (WA.player.state.status == false || WA.player.state.status == undefined) {
-        WA.controls.disablePlayerControls();
-        console.log("Entering visibleNote layer");
-
-        formWebsite = await WA.ui.website.open({
-          url: "./form.html",
-          position: {
-            vertical: "top",
-            horizontal: "middle",
-          },
-          size: {
-            height: "60vh",
-            width: "50vw",
-          },
-          margin: {
-            top: "10vh",
-          },
-          allowApi: true,
-        });
-
-        var id = setInterval(() => {
-          if (WA.player.state.status) {
-            formWebsite.close();
-            clearInterval(id);
-          }
-        }, 1000);
-      } else {
-        console.log("Already registered");
-      }
+      registration();
     });
 
     WA.room.area.onEnter("to-date").subscribe(() => {
@@ -70,7 +43,48 @@ WA.onInit()
       }
     });
 
+    WA.room.area.onEnter("displayPretendantInfosForPretendant").subscribe(() => {
+      if (!WA.player.tags.includes("pretendant")) {
+        return;
+      }
+      try {
+        currentPopup = WA.ui.openPopup(
+          "displayPretendantInfosPopup",
+          displayNotes(WA.state.loadVariable("pretendantInfos")),
+          []
+        );
+      } catch (e) {
+        currentPopup = WA.ui.openPopup("displayPretendantInfosPopup", "Infos pas encore disponibles", [
+          {
+            label: "Inscription",
+            className: "primary",
+            callback: async () => {
+              registration();
+            },
+          },
+        ]);
+      }
+    });
+
+    WA.room.area.onEnter("displayPretendantInfos").subscribe(() => {
+      try {
+        currentPopup = WA.ui.openPopup(
+          "displayPretendantInfosPopup",
+          displayNotes(WA.state.loadVariable("pretendantInfos")),
+          []
+        );
+      } catch (e) {
+        currentPopup = WA.ui.openPopup("displayPretendantInfosPopup", "Infos pas encore disponibles", []);
+      }
+    });
+
+    WA.room.area.onLeave("displayPretendantInfos").subscribe(closePopup);
+
     WA.room.area.onLeave("registrationArea").subscribe(() => {
+      formWebsite.close();
+    });
+
+    WA.room.area.onLeave("displayPretendantInfos").subscribe(() => {
       formWebsite.close();
     });
 
@@ -116,38 +130,8 @@ WA.onInit()
       timer.close();
     });
 
-    //code Nicolas
-    WA.room.area.onEnter("showPlayer").subscribe(() => {
-      openPopup();
-      console.log(WA.state.loadVariable("index"), WA.player.state.loadVariable("id"));
-    });
-
-    WA.room.area.onEnter("validatePlayer").subscribe(() => {
-      WA.state.saveVariable("validatedIndex", WA.state.loadVariable("index"));
-
-      const hasPlayers =
-        typeof WA.state.loadVariable("players") === "object" && WA.state.loadVariable("index") in WA.state.players;
-
-      if (hasPlayers) {
-        const playerName =
-          WA.state.players[WA.state.loadVariable("index")].firstName +
-          WA.state.players[WA.state.loadVariable("index")].lastName;
-        WA.ui.openPopup("validatePlayerPopup", `${playerName}, on y va !`, []);
-      } else {
-        WA.ui.openPopup("validatePlayerPopup", "Il n'y a pas de prétendant(e)", []);
-      }
-    });
-
-    WA.room.area.onEnter("nextPlayer").subscribe(() => {
-      closePopup();
-      if (WA.state.loadVariable("index") in WA.state.players) {
-        WA.state.saveVariable("index", WA.state.loadVariable("index") + 1);
-      }
-      openPopup();
-    });
-
+    WA.room.area.onEnter("showPlayer").subscribe(openPopup);
     WA.room.area.onLeave("showPlayer").subscribe(closePopup);
-    //fin code nicolas
 
     bootstrapExtra()
       .then(() => {
@@ -175,11 +159,46 @@ String.prototype.capitalize = function () {
 };
 
 function openPopup() {
+  if (!WA.player.tags.includes("pretendant")) {
+    return;
+  }
   try {
     currentPopup = WA.ui.openPopup(
       "playersPopup",
       displayNotes(WA.state.loadVariable("players")[WA.state.loadVariable("index")]),
-      []
+      [
+        {
+          label: "Validation",
+          className: "primary",
+          callback: () => {
+            WA.state.saveVariable("validatedIndex", WA.state.loadVariable("index"));
+
+            const hasPlayers =
+              typeof WA.state.loadVariable("players") === "object" &&
+              WA.state.loadVariable("index") in WA.state.players;
+
+            if (hasPlayers) {
+              const playerName =
+                WA.state.players[WA.state.loadVariable("index")].firstName +
+                WA.state.players[WA.state.loadVariable("index")].lastName;
+              WA.ui.openPopup("validatePlayerPopup", `${playerName}, on y va !`, []);
+            } else {
+              WA.ui.openPopup("validatePlayerPopup", "Il n'y a pas de prétendant(e)", []);
+            }
+          },
+        },
+        {
+          label: "Suivant",
+          className: "primary",
+          callback: () => {
+            closePopup();
+            if (WA.state.loadVariable("index") in WA.state.players) {
+              WA.state.saveVariable("index", WA.state.loadVariable("index") + 1);
+            }
+            openPopup();
+          },
+        },
+      ]
     );
   } catch (e) {
     currentPopup = WA.ui.openPopup("playersPopup", "Il n'y a pas de prétendant(e)", []);
@@ -197,6 +216,36 @@ function displayNotes(player: { firstName: string; lastName: string; age: string
     " cherche " +
     player.searching
   );
+}
+
+async function registration() {
+  if (WA.player.state.status == false || WA.player.state.status == undefined) {
+    WA.controls.disablePlayerControls();
+    console.log("Entering visibleNote layer");
+
+    formWebsite = await WA.ui.website.open({
+      url: "./form.html",
+      position: {
+        vertical: "top",
+        horizontal: "middle",
+      },
+      size: {
+        height: "60vh",
+        width: "50vw",
+      },
+      margin: {
+        top: "10vh",
+      },
+      allowApi: true,
+    });
+
+    var id = setInterval(() => {
+      if (WA.player.state.status) {
+        formWebsite.close();
+        clearInterval(id);
+      }
+    }, 1000);
+  }
 }
 
 String.prototype.capitalize = function () {

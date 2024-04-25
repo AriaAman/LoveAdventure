@@ -23,32 +23,43 @@ WA.onInit()
         alert("Veuillez remplir les champs obligatoires");
       } else {
         alert("Inscription réussie");
-        WA.player.state.firstName = firstName.value;
-        //WA.player.state.status = true;
-        WA.player.state.lastName = lastName.value;
-        WA.player.state.phone = phone.value;
-        WA.player.state.email = email.value;
-        WA.player.state.age = age.value;
-        WA.player.state.gender = gender.value;
-        WA.player.state.searching = searching.value;
-        // WA.player.state.id = WA.state.loadVariable('indexPlayers');
+        if (WA.player.tags.includes("pretendant")) {
+          // a changer par "pretendant"
+          WA.state.saveVariable("pretendantInfos", {
+            firstName: firstName.value,
+            lastName: lastName.value,
+            age: phone.value,
+            gender: gender.value,
+            searching: searching.value,
+          });
+          WA.player.state.status = true;
+        } else {
+          WA.player.state.firstName = firstName.value;
+          WA.player.state.status = true;
+          WA.player.state.lastName = lastName.value;
+          WA.player.state.phone = phone.value;
+          WA.player.state.email = email.value;
+          WA.player.state.age = age.value;
+          WA.player.state.gender = gender.value;
+          WA.player.state.searching = searching.value;
+          // WA.player.state.id = WA.state.loadVariable('indexPlayers'); // decommenter pour prod
 
-        WA.state.saveVariable("players", {
-          ...WA.state.loadVariable("players"),
-          [WA.state.loadVariable("indexPlayers")]: {
-            firstName: WA.player.state.firstName,
-            lastName: WA.player.state.lastName,
-            age: WA.player.state.age,
-            gender: WA.player.state.gender,
-            searching: WA.player.state.searching,
-            email: WA.player.state.email,
-            phone: WA.player.state.phone,
-          },
-        });
-        WA.state.saveVariable("indexPlayers", WA.state.loadVariable("indexPlayers") + 1);
+          WA.state.saveVariable("players", {
+            ...WA.state.loadVariable("players"),
+            [WA.state.loadVariable("indexPlayers")]: {
+              firstName: WA.player.state.firstName,
+              lastName: WA.player.state.lastName,
+              age: WA.player.state.age,
+              gender: WA.player.state.gender,
+              searching: WA.player.state.searching,
+              email: WA.player.state.email,
+              phone: WA.player.state.phone,
+            },
+          });
+          WA.state.saveVariable("indexPlayers", WA.state.loadVariable("indexPlayers") + 1);
+        }
         WA.controls.restorePlayerControls();
         e.preventDefault();
-        console.log(WA.state.players);
       }
     });
   })

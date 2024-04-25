@@ -326,49 +326,6 @@
          "name":"floorLayer",
          "objects":[
                 {
-                 "height":61.6672851518306,
-                 "id":12,
-                 "name":"clockPopup",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":93.7162209047986,
-                 "x":324.252658731954,
-                 "y":22.0269116471316
-                }, 
-                {
-                 "height":128,
-                 "id":13,
-                 "name":"jitsiChillZone",
-                 "properties":[
-                        {
-                         "name":"focusable",
-                         "type":"bool",
-                         "value":true
-                        }, 
-                        {
-                         "name":"jitsiRoom",
-                         "type":"string",
-                         "value":"ChillZone"
-                        }, 
-                        {
-                         "name":"jitsiTrigger",
-                         "type":"string",
-                         "value":"onaction"
-                        }, 
-                        {
-                         "name":"zoom_margin",
-                         "type":"float",
-                         "value":1
-                        }],
-                 "rotation":0,
-                 "type":"area",
-                 "visible":true,
-                 "width":192,
-                 "x":32,
-                 "y":95
-                }, 
-                {
                  "height":128,
                  "id":14,
                  "name":"silentZone",
@@ -384,38 +341,6 @@
                  "width":224,
                  "x":640,
                  "y":544
-                }, 
-                {
-                 "height":224,
-                 "id":16,
-                 "name":"jitsiMeetingRoom",
-                 "properties":[
-                        {
-                         "name":"focusable",
-                         "type":"bool",
-                         "value":true
-                        }, 
-                        {
-                         "name":"jitsiRoom",
-                         "type":"string",
-                         "value":"MeetingRoom"
-                        }, 
-                        {
-                         "name":"jitsiTrigger",
-                         "type":"string",
-                         "value":"onaction"
-                        }, 
-                        {
-                         "name":"zoom_margin",
-                         "type":"float",
-                         "value":1
-                        }],
-                 "rotation":0,
-                 "type":"area",
-                 "visible":true,
-                 "width":192,
-                 "x":767,
-                 "y":225
                 }, 
                 {
                  "height":1,
@@ -448,59 +373,8 @@
                  "type":"area",
                  "visible":true,
                  "width":32,
-                 "x":95.6059874456784,
-                 "y":317.890873973926
-                }, 
-                {
-                 "height":32,
-                 "id":19,
-                 "name":"from-conference",
-                 "properties":[
-                        {
-                         "name":"start",
-                         "type":"bool",
-                         "value":true
-                        }],
-                 "rotation":0,
-                 "type":"area",
-                 "visible":true,
-                 "width":32,
-                 "x":64,
-                 "y":544
-                }, 
-                {
-                 "height":32,
-                 "id":20,
-                 "name":"door-enter",
-                 "properties":[
-                        {
-                         "name":"start",
-                         "type":"bool",
-                         "value":false
-                        }],
-                 "rotation":0,
-                 "type":"area",
-                 "visible":true,
-                 "width":63,
-                 "x":576,
-                 "y":222
-                }, 
-                {
-                 "height":31,
-                 "id":21,
-                 "name":"door-inside",
-                 "properties":[
-                        {
-                         "name":"start",
-                         "type":"bool",
-                         "value":false
-                        }],
-                 "rotation":0,
-                 "type":"area",
-                 "visible":true,
-                 "width":62,
-                 "x":576,
-                 "y":161
+                 "x":670.665758428439,
+                 "y":96.4236536392085
                 }, 
                 {
                  "height":111.666666666667,
@@ -510,8 +384,8 @@
                  "type":"area",
                  "visible":true,
                  "width":222,
-                 "x":165.666666666667,
-                 "y":257.666666666667
+                 "x":427.40065433497,
+                 "y":-4.06732100163549
                 }, 
                 {
                  "height":95,
@@ -529,17 +403,6 @@
                  "width":65.3333333333334,
                  "x":256,
                  "y":449
-                }, 
-                {
-                 "height":39.697,
-                 "id":24,
-                 "name":"nextPlayer",
-                 "rotation":0,
-                 "type":"area",
-                 "visible":true,
-                 "width":50.2727,
-                 "x":315.280316666667,
-                 "y":380.984833333333
                 }, 
                 {
                  "height":62,
@@ -570,8 +433,8 @@
                  "type":"area",
                  "visible":true,
                  "width":187,
-                 "x":517.5,
-                 "y":89.5
+                 "x":522.591606895684,
+                 "y":-50.5919843966276
                 }, 
                 {
                  "height":48.697,
@@ -580,42 +443,20 @@
                  "rotation":0,
                  "type":"area",
                  "visible":true,
-                 "width":222.2727,
-                 "x":165.61365,
-                 "y":373.568166666667
-                }, 
-                {
-                 "height":39.697,
-                 "id":27,
-                 "name":"validatePlayer",
-                 "rotation":0,
-                 "type":"area",
-                 "visible":true,
-                 "width":50.2727,
-                 "x":183.000781820377,
-                 "y":379.685782955094
+                 "width":48.4436319169483,
+                 "x":538.375325506313,
+                 "y":150.842609852775
                 }, 
                 {
                  "height":111.667,
                  "id":28,
-                 "name":"validatePlayerPopup",
+                 "name":"displayPretendantInfosPopup",
                  "rotation":0,
                  "type":"area",
                  "visible":true,
                  "width":222,
-                 "x":438.5,
-                 "y":267.1665
-                }, 
-                {
-                 "height":39.697,
-                 "id":29,
-                 "name":"clock",
-                 "rotation":0,
-                 "type":"area",
-                 "visible":true,
-                 "width":50.2727,
-                 "x":425.530316666667,
-                 "y":85.6515
+                 "x":591.221217953053,
+                 "y":99.544172043488
                 }, 
                 {
                  "height":1,
@@ -662,23 +503,6 @@
                  "y":3
                 }, 
                 {
-                 "height":64,
-                 "id":36,
-                 "name":"to-conference",
-                 "properties":[
-                        {
-                         "name":"exitUrl",
-                         "type":"string",
-                         "value":"conference.tmj#from-office"
-                        }],
-                 "rotation":0,
-                 "type":"area",
-                 "visible":true,
-                 "width":32,
-                 "x":0.417189763399325,
-                 "y":506.301545147272
-                }, 
-                {
                  "height":32.1313,
                  "id":37,
                  "name":"to-date",
@@ -686,8 +510,8 @@
                  "type":"area",
                  "visible":true,
                  "width":32,
-                 "x":96.0231772090777,
-                 "y":446.909965644616
+                 "x":606.907787753937,
+                 "y":224.184408830724
                 }, 
                 {
                  "height":1,
@@ -712,38 +536,48 @@
                  "y":0.862868179623371
                 }, 
                 {
-                 "height":32,
+                 "height":48.697,
                  "id":40,
-                 "name":"ejectZone",
-                 "properties":[
-                        {
-                         "name":"start",
-                         "type":"bool",
-                         "value":true
-                        }],
+                 "name":"displayPretendantInfos",
                  "rotation":0,
                  "type":"area",
                  "visible":true,
-                 "width":32,
-                 "x":770,
-                 "y":130.5
+                 "width":48.4436,
+                 "x":664.091899699427,
+                 "y":218.182969652551
                 }, 
                 {
-                 "height":59,
+                 "height":111.667,
                  "id":41,
-                 "name":"testZone",
-                 "properties":[
-                        {
-                         "name":"start",
-                         "type":"bool",
-                         "value":false
-                        }],
+                 "name":"validatePlayerPopup",
                  "rotation":0,
                  "type":"area",
                  "visible":true,
-                 "width":80,
-                 "x":875,
-                 "y":129
+                 "width":222,
+                 "x":373.321619624265,
+                 "y":304.833466182344
+                }, 
+                {
+                 "height":1,
+                 "id":43,
+                 "name":"pretendantInfos",
+                 "rotation":0,
+                 "type":"variable",
+                 "visible":true,
+                 "width":1,
+                 "x":271.921580463219,
+                 "y":0.613620198257845
+                }, 
+                {
+                 "height":48.697,
+                 "id":44,
+                 "name":"displayPretendantInfosForPretendant",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":48.4436,
+                 "x":633.88817860828,
+                 "y":151.835280042783
                 }],
          "offsetx":0,
          "offsety":2.5,
@@ -828,7 +662,7 @@
          "y":0
         }],
  "nextlayerid":63,
- "nextobjectid":42,
+ "nextobjectid":45,
  "orientation":"orthogonal",
  "properties":[
         {
