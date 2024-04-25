@@ -1,5 +1,7 @@
-const departMinutes = 5
-let temps = departMinutes * 60
+/// <reference types="@workadventure/iframe-api-typings" />
+
+const departMinutes = 1
+let temps = departMinutes * 5
 
 const timerElement = document.getElementById("timer")
 
@@ -12,8 +14,11 @@ setInterval(() => {
 
   timerElement.innerText = `${minutes}:${secondes}`
   temps = temps <= 0 ? 0 : temps - 1
+  console.log(temps);
+  if(temps === 0) {
+    console.log("Temps écoulé")
+      WA.nav.goToRoom("#ejectZone")
+  }
 }, 1000)
 
-if(temps === 0) {
-    WA.state.timesup = true
-}
+

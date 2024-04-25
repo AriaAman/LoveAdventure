@@ -9,12 +9,29 @@ let currentPopup: any = undefined;
 let formWebsite: any = undefined;
 let timer: any = undefined;
 
-console.log("on vient de load !!!!!!!!!!!");
+
+let index: string = "azeaze";
 
 WA.onInit()
-  .then(() => {
-    WA.player.state.saveVariable("id", 1); // enlever pour prod
-    WA.player.state.saveVariable("status", false); // enlever pour prod
+  .then(async () => {
+    await WA.players.configureTracking();
+
+    WA.event.on("teleport-event").subscribe((event) => {
+        console.log("Event received", event.data);
+        WA.nav.goToRoom("#ejectZone");
+    });
+      
+    WA.ui.onRemotePlayerClicked.subscribe((remotePlayer) => {
+        console.log("Le joueur distant a été cliqué:", remotePlayer)
+    
+        remotePlayer.addAction('Téléportation', () => {
+            remotePlayer.sendEvent("teleport-event", "my payload");
+        }); 
+    });
+
+    
+    //WA.player.state.saveVariable("id", 2);
+    WA.player.state.saveVariable("status", false);
 
     WA.room.area.onEnter("registrationArea").subscribe(async () => {
       registration();
@@ -105,6 +122,8 @@ WA.onInit()
         },
         allowApi: true,
       });
+
+       
     });
 
     WA.room.area.onLeave("door-enter").subscribe(() => {
