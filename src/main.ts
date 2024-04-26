@@ -156,10 +156,13 @@ function openPopup() {
     return;
   }
   try {
+    const index1 = (WA.state.loadVariable("index1") as number) ?? 0;
+    console.log(index1);
+
     currentPopup = WA.ui.openPopup(
       "playersPopup1",
 
-      displayNotes(WA.state.loadVariable("players1")[WA.state.loadVariable("index1") as any]),
+      displayNotes(WA.state.loadVariable("players1")[index1]),
       [
         {
           label: "Validation",
@@ -168,8 +171,7 @@ function openPopup() {
             WA.state.saveVariable("validatedIndex1", WA.state.loadVariable("index1"));
 
             const hasPlayers =
-              typeof WA.state.loadVariable("players1") === "object" &&
-              (WA.state.loadVariable("index1") as any) in (WA.state.players as any);
+              typeof WA.state.loadVariable("players1") === "object" && index1 in (WA.state.players as any);
 
             if (hasPlayers) {
               const index = Number(WA.state.loadVariable("index1"));
