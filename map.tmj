@@ -889,8 +889,8 @@
                  "type":"area",
                  "visible":true,
                  "width":350.318482342847,
-                 "x":321.297994261382,
-                 "y":448.652603843376
+                 "x":319.579633577474,
+                 "y":389.369160248565
                 }, 
                 {
                  "height":194.1313,
@@ -926,15 +926,15 @@
                  "y":95.9345
                 }, 
                 {
-                 "height":194.131,
+                 "height":35.1826367385515,
                  "id":24,
-                 "name":"door-enter",
+                 "name":"door-enter1",
                  "rotation":0,
                  "type":"area",
                  "visible":true,
-                 "width":246,
-                 "x":31.5,
-                 "y":381.9345
+                 "width":32.9232751954635,
+                 "x":127.728198298823,
+                 "y":415.442533336197
                 }, 
                 {
                  "height":32.1313,
@@ -972,7 +972,7 @@
                 {
                  "height":29.697,
                  "id":28,
-                 "name":"displayPretendantInfos",
+                 "name":"displayPretendantInfos1",
                  "rotation":0,
                  "type":"area",
                  "visible":true,
@@ -1005,7 +1005,7 @@
                 {
                  "height":66.667,
                  "id":31,
-                 "name":"displayPretendantInfosPopup",
+                 "name":"displayPretendantInfosPopup1",
                  "rotation":0,
                  "type":"area",
                  "visible":true,
@@ -1036,15 +1036,15 @@
                  "y":29.6665
                 }, 
                 {
-                 "height":34.0403909090909,
+                 "height":60.7307823681656,
                  "id":34,
-                 "name":"to-date",
+                 "name":"showPlayers1",
                  "rotation":0,
                  "type":"area",
                  "visible":true,
-                 "width":36.9090909090909,
-                 "x":283.909090909091,
-                 "y":255.025259090909
+                 "width":92.7162730507926,
+                 "x":194.132319637658,
+                 "y":385.242017421546
                 }, 
                 {
                  "height":33.6767545454545,
@@ -1060,7 +1060,7 @@
                 {
                  "height":33.1313,
                  "id":36,
-                 "name":"to-date",
+                 "name":"to-date1",
                  "rotation":0,
                  "type":"area",
                  "visible":true,
@@ -1082,7 +1082,7 @@
                 {
                  "height":32.1313,
                  "id":38,
-                 "name":"from-queue",
+                 "name":"from-queue1",
                  "properties":[
                         {
                          "name":"start",
@@ -1148,7 +1148,7 @@
                  "y":512.93435
                 }, 
                 {
-                 "height":1,
+                 "height":0,
                  "id":42,
                  "name":"players",
                  "properties":[
@@ -1160,14 +1160,14 @@
                  "rotation":0,
                  "type":"variable",
                  "visible":true,
-                 "width":1,
-                 "x":146.28245,
-                 "y":11.859855
+                 "width":0,
+                 "x":1,
+                 "y":1
                 }, 
                 {
                  "height":1,
                  "id":43,
-                 "name":"indexPlayers",
+                 "name":"indexPlayers1",
                  "properties":[
                         {
                          "name":"default",
@@ -1183,13 +1183,13 @@
                  "type":"variable",
                  "visible":true,
                  "width":1,
-                 "x":54.63045,
-                 "y":14.526525
+                 "x":17.3948229520405,
+                 "y":313.404491438288
                 }, 
                 {
                  "height":1,
                  "id":44,
-                 "name":"index",
+                 "name":"index1",
                  "properties":[
                         {
                          "name":"default",
@@ -1205,13 +1205,13 @@
                  "type":"variable",
                  "visible":true,
                  "width":1,
-                 "x":97.29745,
-                 "y":13.859855
+                 "x":16.8684955764075,
+                 "y":378.272525042697
                 }, 
                 {
                  "height":1,
                  "id":45,
-                 "name":"validatedIndex",
+                 "name":"validatedIndex1",
                  "properties":[
                         {
                          "name":"default",
@@ -1227,19 +1227,63 @@
                  "type":"variable",
                  "visible":true,
                  "width":1,
-                 "x":12.28055,
-                 "y":11.722723
+                 "x":17.2453002730613,
+                 "y":355.283441895839
                 }, 
                 {
                  "height":1,
                  "id":46,
-                 "name":"pretendantInfos",
+                 "name":"pretendantInfos1",
                  "rotation":0,
                  "type":"variable",
                  "visible":true,
                  "width":1,
-                 "x":199.71945,
-                 "y":11.473475
+                 "x":23.9672903336312,
+                 "y":334.678717776288
+                }, 
+                {
+                 "height":34.0404,
+                 "id":47,
+                 "name":"to-date",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":36.9091,
+                 "x":286.462952426399,
+                 "y":252.3101138143
+                }, 
+                {
+                 "height":60.7308,
+                 "id":48,
+                 "name":"displayPretendantInfosForPretendant1",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":92.7163,
+                 "x":194.664172872857,
+                 "y":399.107262568748
+                }, 
+                {
+                 "height":1,
+                 "id":49,
+                 "name":"players1",
+                 "properties":[
+                        {
+                         "name":"default",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"persist",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"variable",
+                 "visible":true,
+                 "width":1,
+                 "x":16.4847945648657,
+                 "y":402.282271109673
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1248,7 +1292,7 @@
          "y":0
         }],
  "nextlayerid":106,
- "nextobjectid":47,
+ "nextobjectid":50,
  "orientation":"orthogonal",
  "properties":[
         {

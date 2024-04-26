@@ -8,26 +8,23 @@ let currentPopup: any = undefined;
 let formWebsite: any = undefined;
 let timer: any = undefined;
 
-
-
 WA.onInit()
   .then(async () => {
     await WA.players.configureTracking();
 
     WA.event.on("teleport-event").subscribe((event) => {
-        console.log("Event received", event.data);
-        WA.nav.goToRoom("#ejectZone");
-    });
-      
-    WA.ui.onRemotePlayerClicked.subscribe((remotePlayer) => {
-        console.log("Le joueur distant a été cliqué:", remotePlayer)
-    
-        remotePlayer.addAction('Kick', () => {
-            remotePlayer.sendEvent("teleport-event", "my payload");
-        }); 
+      console.log("Event received", event.data);
+      WA.nav.goToRoom("#ejectZone");
     });
 
-    
+    WA.ui.onRemotePlayerClicked.subscribe((remotePlayer) => {
+      console.log("Le joueur distant a été cliqué:", remotePlayer);
+
+      remotePlayer.addAction("Kick", () => {
+        remotePlayer.sendEvent("teleport-event", "my payload");
+      });
+    });
+
     //WA.player.state.saveVariable("id", 2);
     WA.player.state.saveVariable("status", false);
 
@@ -35,24 +32,24 @@ WA.onInit()
       registration();
     });
 
-    WA.room.area.onEnter("to-date").subscribe(() => {
-      if (WA.state.loadVariable("validatedIndex") === WA.player.state.loadVariable("id")) {
-        WA.nav.goToRoom("#from-queue");
+    WA.room.area.onEnter("to-date1").subscribe(() => {
+      if (WA.state.loadVariable("validatedIndex1") === WA.player.state.loadVariable("id")) {
+        WA.nav.goToRoom("#from-queue1");
       }
     });
 
-    WA.room.area.onEnter("displayPretendantInfosForPretendant").subscribe(() => {
-      if (!WA.player.tags.includes("pretendant")) {
+    WA.room.area.onEnter("displayPretendantInfosForPretendant1").subscribe(() => {
+      if (!WA.player.tags.includes("pretendant") || WA.state.loadVariable("pretendantInfos1")) {
         return;
       }
       try {
         currentPopup = WA.ui.openPopup(
-          "displayPretendantInfosPopup",
-          displayNotes(WA.state.loadVariable("pretendantInfos") as any),
+          "displayPretendantInfosPopup1",
+          displayNotes(WA.state.loadVariable("pretendantInfos1") as any),
           []
         );
       } catch (e) {
-        currentPopup = WA.ui.openPopup("displayPretendantInfosPopup", "Infos pas encore disponibles", [
+        currentPopup = WA.ui.openPopup("displayPretendantInfosPopup1", "Infos pas encore disponibles", [
           {
             label: "Inscription",
             className: "primary",
@@ -64,46 +61,29 @@ WA.onInit()
       }
     });
 
-    WA.room.area.onEnter("displayPretendantInfos").subscribe(() => {
+    WA.room.area.onEnter("displayPretendantInfos1").subscribe(() => {
       try {
         currentPopup = WA.ui.openPopup(
-          "displayPretendantInfosPopup",
-          displayNotes(WA.state.loadVariable("pretendantInfos") as any),
+          "displayPretendantInfosPopup1",
+          displayNotes(WA.state.loadVariable("pretendantInfos1") as any),
           []
         );
       } catch (e) {
-        currentPopup = WA.ui.openPopup("displayPretendantInfosPopup", "Infos pas encore disponibles", []);
+        currentPopup = WA.ui.openPopup("displayPretendantInfosPopup1", "Infos pas encore disponibles", []);
       }
     });
 
-    WA.room.area.onLeave("displayPretendantInfos").subscribe(closePopup);
+    WA.room.area.onLeave("displayPretendantInfos1").subscribe(closePopup);
 
     WA.room.area.onLeave("registrationArea").subscribe(() => {
       formWebsite.close();
     });
 
-    WA.room.area.onLeave("displayPretendantInfos").subscribe(() => {
+    WA.room.area.onLeave("displayPretendantInfos1").subscribe(() => {
       formWebsite.close();
     });
 
-    WA.room.area.onEnter("door-enter").subscribe(async () => {
-      console.log(
-        "Event received",
-        WA.player.state.id +
-          " " +
-          WA.player.state.firstName +
-          " " +
-          WA.player.state.lastName +
-          " " +
-          WA.player.state.username +
-          " " +
-          WA.player.state.phone +
-          " " +
-          WA.player.state.email +
-          " " +
-          WA.player.state.password
-      );
-      console.log("Entering dateZone layer");
+    WA.room.area.onEnter("door-enter1").subscribe(async () => {
       timer = await WA.ui.website.open({
         url: "./timer.html",
         position: {
@@ -120,47 +100,18 @@ WA.onInit()
         },
         allowApi: true,
       });
-
-       
     });
 
-    WA.room.area.onLeave("door-enter").subscribe(() => {
+    WA.room.area.onLeave("door-enter1").subscribe(() => {
       timer.close();
     });
 
-    WA.room.area.onEnter("showPlayer").subscribe(() => {
+    WA.room.area.onEnter("showPlayer1").subscribe(() => {
       openPopup();
-      console.log(WA.state.loadVariable("index"), WA.player.state.loadVariable("id"));
+      console.log(WA.state.loadVariable("index1"), WA.player.state.loadVariable("id"));
     });
 
-    WA.room.area.onEnter("validatePlayer").subscribe(() => {
-      WA.state.saveVariable("validatedIndex", WA.state.loadVariable("index"));
-
-      const index = WA.state.loadVariable("index") as number;
-      const players = WA.state.loadVariable("players") as any;
-      const hasPlayers =
-        typeof players === "object" && index in players;
-
-    
-      if (hasPlayers) {
-        const playerName =
-            players[index.toString()].firstName +
-            players[index].lastName;
-        WA.ui.openPopup("validatePlayerPopup", `${playerName}, on y va !`, []);
-      } else {
-        WA.ui.openPopup("validatePlayerPopup", "Il n'y a pas de prétendant(e)", []);
-      }
-    });
-
-    WA.room.area.onEnter("nextPlayer").subscribe(() => {
-        closePopup();
-        if ((WA.state.loadVariable("index") as any) in (WA.state.players as any)) {
-            WA.state.saveVariable("index", Number(WA.state.loadVariable("index")) + 1);
-        }
-        openPopup();
-    });
-
-    WA.room.area.onLeave("showPlayer").subscribe(closePopup);
+    WA.room.area.onLeave("showPlayer1").subscribe(closePopup);
 
     bootstrapExtra()
       .then(() => {
@@ -195,41 +146,39 @@ function openPopup() {
     currentPopup = WA.ui.openPopup(
       "playersPopup",
 
-      displayNotes(WA.state.loadVariable("players")[WA.state.loadVariable("index") as any]),
+      displayNotes(WA.state.loadVariable("players1")[WA.state.loadVariable("index") as any]),
       [
         {
           label: "Validation",
           className: "primary",
-        callback: () => {
-                WA.state.saveVariable("validatedIndex", WA.state.loadVariable("index"));
+          callback: () => {
+            WA.state.saveVariable("validatedIndex1", WA.state.loadVariable("index1"));
 
-                const hasPlayers =
-                    typeof WA.state.loadVariable("players") === "object" &&
-                    (WA.state.loadVariable("index") as any) in (WA.state.players as any);
+            const hasPlayers =
+              typeof WA.state.loadVariable("players1") === "object" &&
+              (WA.state.loadVariable("index1") as any) in (WA.state.players as any);
 
-                if (hasPlayers) {
-                    const index = Number(WA.state.loadVariable("index"));
-                    const playerName =
-                        WA.state.players[index].firstName +
-                        WA.state.players[index].lastName;
-                    WA.ui.openPopup("validatePlayerPopup", `${playerName}, on y va !`, []);
-                } else {
-                    WA.ui.openPopup("validatePlayerPopup", "Il n'y a pas de prétendant(e)", []);
-                }
-            },
+            if (hasPlayers) {
+              const index = Number(WA.state.loadVariable("index1"));
+              const playerName = WA.state.players[index].firstName + WA.state.players[index].lastName;
+              WA.ui.openPopup("validatePlayerPopup", `${playerName}, on y va !`, []);
+            } else {
+              WA.ui.openPopup("validatePlayerPopup", "Il n'y a pas de prétendant(e)", []);
+            }
+          },
         },
         {
           label: "Suivant",
           className: "primary",
-        callback: () => {
+          callback: () => {
             closePopup();
-            const index = WA.state.loadVariable("index") as string | number;
+            const index = WA.state.loadVariable("index1") as string | number;
             if (index in (WA.state.players as object)) {
-                WA.state.saveVariable("index", Number(index) + 1);
+              WA.state.saveVariable("index1", Number(index) + 1);
             }
             openPopup();
+          },
         },
-    },
       ]
     );
   } catch (e) {
