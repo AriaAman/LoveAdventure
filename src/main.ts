@@ -199,9 +199,8 @@ function openPopup() {
           className: "primary",
           callback: () => {
             closePopup();
-            const index = WA.state.loadVariable("index1") as string | number;
-            if (index in (WA.state.players as object)) {
-              WA.state.saveVariable("index1", Number(index) + 1);
+            if (index1 in (players1 as object)) {
+              WA.state.saveVariable("index1", Number(index1) + 1);
             }
             openPopup();
           },
