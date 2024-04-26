@@ -25,15 +25,13 @@ WA.onInit()
     WA.player.state.saveVariable("status", false);
 
     WA.event.on("showValidatedPlayer").subscribe((event) => {
-      const players1 = WA.state.loadVariable("players1");
-      const index1 = (WA.state.loadVariable("index1") as number) ?? 0;
-      const playerName = players1[index1].firstName + players1[index1].lastName;
-      WA.ui.openPopup("validatePlayerPopup", `${playerName}, on y va ${event.data}!`, []);
+      WA.ui.openPopup("validatePlayerPopup", `${event.data}, on y va ${event.data.salle}!`, []);
     });
 
     //code pour zone 1
     zone("1");
 
+    //fonction pour les zones
     function zone(zone: string) {
       WA.room.area.onEnter("to-date" + zone).subscribe(() => {
         if (WA.state.loadVariable("validatedIndex" + zone) === WA.player.state.loadVariable("id")) {
@@ -42,7 +40,7 @@ WA.onInit()
       });
 
       WA.room.area.onEnter("reset").subscribe(() => {
-        WA.state.saveVariable("pretendantInfos1", {});
+        WA.state.saveVariable("pretendantInfos" + zone, {});
       });
 
       WA.room.area.onEnter("displayPretendantInfosForPretendant" + zone).subscribe(() => {
@@ -192,7 +190,10 @@ function openPopup(zone: string) {
               typeof players === "object" && players !== null && Object.prototype.hasOwnProperty.call(players, index);
 
             if (hasPlayers) {
-              WA.event.broadcast("showValidatedPlayer", "salle " + zone);
+              const players = WA.state.loadVariable("players" + zone);
+              const index = (WA.state.loadVariable("index" + zone) as number) ?? 0;
+              const playerName = players[index].firstName + players[index].lastName;
+              WA.event.broadcast("showValidatedPlayer", { playerName: playerName, salle: "salle " + zone });
             }
           },
         },
