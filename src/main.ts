@@ -40,9 +40,10 @@ WA.onInit()
     });
 
     WA.room.area.onEnter("displayPretendantInfosForPretendant1").subscribe(() => {
+      const pretendantInfos1 = WA.state.loadVariable("pretendantInfos1");
       if (
         !WA.player.tags.includes("pretendant") ||
-        Object.keys(WA.state.loadVariable("pretendantInfos1")).length !== 0
+        (pretendantInfos1 && typeof pretendantInfos1 === "object" && Object.keys(pretendantInfos1).length === 0)
       ) {
         console.log("Not a pretendant or already registered");
         return;
