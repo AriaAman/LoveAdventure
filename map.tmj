@@ -878,13 +878,13 @@
                 {
                  "height":76.0000139987951,
                  "id":20,
-                 "name":"validatePlayerPopup1",
+                 "name":"validatePlayerPopup",
                  "rotation":359.947225271744,
                  "type":"area",
                  "visible":true,
                  "width":350.318482342847,
-                 "x":321.197233059843,
-                 "y":346.502773965809
+                 "x":320.118251618324,
+                 "y":30.3612116006817
                 }, 
                 {
                  "height":194.1313,
@@ -894,19 +894,19 @@
                  "type":"area",
                  "visible":true,
                  "width":247,
-                 "x":715.333333333333,
-                 "y":96.2676833333333
+                 "x":714,
+                 "y":96.93435
                 }, 
                 {
                  "height":194.131,
                  "id":22,
-                 "name":"door-ente4",
+                 "name":"door-enter4",
                  "rotation":0,
                  "type":"area",
                  "visible":true,
                  "width":248,
-                 "x":710.5,
-                 "y":380.9345
+                 "x":713.5,
+                 "y":381.9345
                 }, 
                 {
                  "height":194.131,
@@ -916,19 +916,19 @@
                  "type":"area",
                  "visible":true,
                  "width":245,
-                 "x":30.8333333333333,
-                 "y":95.2678333333333
+                 "x":31.5,
+                 "y":95.9345
                 }, 
                 {
-                 "height":160.515970071885,
+                 "height":187.081370915767,
                  "id":24,
                  "name":"door-enter1",
                  "rotation":0,
                  "type":"area",
                  "visible":true,
-                 "width":225.58994186213,
-                 "x":31.5860652243057,
-                 "y":418.491600520496
+                 "width":219.983753395182,
+                 "x":34.0923943382297,
+                 "y":387.102008396726
                 }, 
                 {
                  "height":32.1313,
@@ -938,8 +938,8 @@
                  "type":"area",
                  "visible":true,
                  "width":32,
-                 "x":482.666666666667,
-                 "y":160.93435
+                 "x":476.280223186609,
+                 "y":159.694424395536
                 }, 
                 {
                  "height":31.8788181818182,
@@ -964,17 +964,6 @@
                  "y":222.1515
                 }, 
                 {
-                 "height":29.697,
-                 "id":28,
-                 "name":"reset",
-                 "rotation":0,
-                 "type":"area",
-                 "visible":true,
-                 "width":32.4436,
-                 "x":467.949342025235,
-                 "y":468.093913458428
-                }, 
-                {
                  "height":31.1515454545455,
                  "id":29,
                  "name":"displayPretendantInfos4",
@@ -984,6 +973,17 @@
                  "width":32.8072363636364,
                  "x":672.414563636364,
                  "y":511.1515
+                }, 
+                {
+                 "height":66.667,
+                 "id":30,
+                 "name":"playersPopup3",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":257,
+                 "x":705,
+                 "y":32.1665
                 }, 
                 {
                  "height":66.667,
@@ -998,25 +998,36 @@
                 }, 
                 {
                  "height":66.667,
-                 "id":33,
-                 "name":"displayPretendantInfosPopup3",
+                 "id":32,
+                 "name":"playersPopup4",
                  "rotation":0,
                  "type":"area",
                  "visible":true,
                  "width":257,
-                 "x":538.833333333333,
-                 "y":122.6665
+                 "x":703.5,
+                 "y":315.6665
+                }, 
+                {
+                 "height":66.667,
+                 "id":33,
+                 "name":"playersPopup2",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":257,
+                 "x":31.5,
+                 "y":29.6665
                 }, 
                 {
                  "height":60.7307823681656,
                  "id":34,
-                 "name":"showPlayer1",
+                 "name":"showPlayer3",
                  "rotation":0,
                  "type":"area",
                  "visible":true,
                  "width":92.7162730507926,
-                 "x":194.132319637658,
-                 "y":385.242017421546
+                 "x":867.447094445712,
+                 "y":98.2136854754251
                 }, 
                 {
                  "height":33.6767545454545,
@@ -1178,7 +1189,7 @@
                  "type":"variable",
                  "visible":true,
                  "width":1,
-                 "x":23.9672903336312,
+                 "x":20.399259886438,
                  "y":334.678717776288
                 }, 
                 {
@@ -1195,13 +1206,13 @@
                 {
                  "height":60.7308,
                  "id":48,
-                 "name":"displayPretendantInfosForPretendant1",
+                 "name":"displayPretendantInfosForPretendant2",
                  "rotation":0,
                  "type":"area",
                  "visible":true,
                  "width":92.7163,
-                 "x":194.664172872857,
-                 "y":399.107262568748
+                 "x":32.4397715972613,
+                 "y":99.7681555453333
                 }, 
                 {
                  "height":1,
@@ -1232,23 +1243,6 @@
                  "y":425.255953251375
                 }, 
                 {
-                 "height":76,
-                 "id":51,
-                 "name":"registrationArea",
-                 "properties":[
-                        {
-                         "name":"formWebsite",
-                         "type":"bool",
-                         "value":true
-                        }],
-                 "rotation":359.947,
-                 "type":"area",
-                 "visible":true,
-                 "width":350.318,
-                 "x":319.826441604659,
-                 "y":231.3303138143
-                }, 
-                {
                  "height":29.697,
                  "id":52,
                  "name":"displayPretendantInfos1",
@@ -1260,126 +1254,341 @@
                  "y":510.06253202847
                 }, 
                 {
-                 "height":66.667,
-                 "id":54,
-                 "name":"playersPopup2",
+                 "height":1,
+                 "id":53,
+                 "name":"indexPlayers2",
+                 "properties":[
+                        {
+                         "name":"default",
+                         "type":"int",
+                         "value":0
+                        }],
                  "rotation":0,
-                 "type":"area",
+                 "type":"variable",
                  "visible":true,
-                 "width":257,
-                 "x":31.5,
-                 "y":27.3331666666666
+                 "width":1,
+                 "x":17.2187030643073,
+                 "y":51.093210231327
                 },
             
                 {
-                 "height":60.7308,
+                 "height":1,
+                 "id":54,
+                 "name":"index2",
+                 "properties":[
+                        {
+                         "name":"default",
+                         "type":"int",
+                         "value":0
+                        }],
+                 "rotation":0,
+                 "type":"variable",
+                 "visible":true,
+                 "width":1,
+                 "x":16.6924030643073,
+                 "y":94.5540275481681
+                }, 
+                {
+                 "height":1,
                  "id":55,
-                 "name":"showPlayer2",
+                 "name":"validatedIndex2",
+                 "properties":[
+                        {
+                         "name":"default",
+                         "type":"int",
+                         "value":0
+                        }],
                  "rotation":0,
-                 "type":"area",
+                 "type":"variable",
                  "visible":true,
-                 "width":92.7163,
-                 "x":34.3085166666667,
-                 "y":95.6346
+                 "width":1,
+                 "x":17.0692030643073,
+                 "y":71.5640275481681
                 }, 
                 {
-                 "height":60.7308,
+                 "height":1,
                  "id":56,
-                 "name":"displayPretendantInfosForPretendant2",
+                 "name":"players2",
+                 "properties":[
+                        {
+                         "name":"default",
+                         "type":"int",
+                         "value":0
+                        }],
                  "rotation":0,
-                 "type":"area",
+                 "type":"variable",
                  "visible":true,
-                 "width":92.7163,
-                 "x":33.14185,
-                 "y":109.1346
+                 "width":1,
+                 "x":16.3087030643073,
+                 "y":118.563027548168
                 }, 
                 {
-                 "height":66.667,
+                 "height":1,
                  "id":57,
-                 "name":"displayPretendantInfosPopup2",
+                 "name":"pretendantInfos2",
                  "rotation":0,
-                 "type":"area",
+                 "type":"variable",
                  "visible":true,
-                 "width":257,
-                 "x":224.5,
-                 "y":131.6665
+                 "width":1,
+                 "x":17.9348239771646,
+                 "y":136.847395185788
                 }, 
                 {
-                 "height":60.7308,
+                 "height":1,
                  "id":58,
-                 "name":"displayPretendantInfosForPretendant2",
+                 "name":"indexPlayers3",
+                 "properties":[
+                        {
+                         "name":"default",
+                         "type":"int",
+                         "value":0
+                        }],
                  "rotation":0,
-                 "type":"area",
+                 "type":"variable",
                  "visible":true,
-                 "width":92.7163,
-                 "x":868.64185,
-                 "y":116.6346
+                 "width":1,
+                 "x":975.183446280755,
+                 "y":34.8226041007057
                 }, 
                 {
-                 "height":60.7308,
+                 "height":1,
                  "id":59,
-                 "name":"showPlayer3",
+                 "name":"index3",
+                 "properties":[
+                        {
+                         "name":"default",
+                         "type":"int",
+                         "value":0
+                        }],
                  "rotation":0,
-                 "type":"area",
+                 "type":"variable",
                  "visible":true,
-                 "width":92.7163,
-                 "x":868.975183333333,
-                 "y":99.6346
+                 "width":1,
+                 "x":974.657146280755,
+                 "y":78.2834041007057
                 }, 
                 {
-                 "height":66.667,
+                 "height":1,
                  "id":60,
-                 "name":"playersPopup3",
+                 "name":"validatedIndex3",
+                 "properties":[
+                        {
+                         "name":"default",
+                         "type":"int",
+                         "value":0
+                        }],
                  "rotation":0,
-                 "type":"area",
+                 "type":"variable",
                  "visible":true,
-                 "width":257,
-                 "x":702.833333333333,
-                 "y":29.9998333333333
+                 "width":1,
+                 "x":975.033946280755,
+                 "y":55.2934041007057
+                }, 
+                {
+                 "height":1,
+                 "id":61,
+                 "name":"players3",
+                 "properties":[
+                        {
+                         "name":"default",
+                         "type":"int",
+                         "value":0
+                        }],
+                 "rotation":0,
+                 "type":"variable",
+                 "visible":true,
+                 "width":1,
+                 "x":974.273446280755,
+                 "y":102.292404100706
+                }, 
+                {
+                 "height":1,
+                 "id":62,
+                 "name":"pretendantInfos3",
+                 "rotation":0,
+                 "type":"variable",
+                 "visible":true,
+                 "width":1,
+                 "x":975.899546280755,
+                 "y":120.576404100706
+                }, 
+                {
+                 "height":1,
+                 "id":63,
+                 "name":"indexPlayers4",
+                 "properties":[
+                        {
+                         "name":"default",
+                         "type":"int",
+                         "value":0
+                        }],
+                 "rotation":0,
+                 "type":"variable",
+                 "visible":true,
+                 "width":1,
+                 "x":974.229343791722,
+                 "y":358.110997882891
+                }, 
+                {
+                 "height":1,
+                 "id":64,
+                 "name":"index4",
+                 "properties":[
+                        {
+                         "name":"default",
+                         "type":"int",
+                         "value":0
+                        }],
+                 "rotation":0,
+                 "type":"variable",
+                 "visible":true,
+                 "width":1,
+                 "x":973.703343791722,
+                 "y":401.571797882891
+                }, 
+                {
+                 "height":1,
+                 "id":65,
+                 "name":"validatedIndex4",
+                 "properties":[
+                        {
+                         "name":"default",
+                         "type":"int",
+                         "value":0
+                        }],
+                 "rotation":0,
+                 "type":"variable",
+                 "visible":true,
+                 "width":1,
+                 "x":974.080343791722,
+                 "y":378.581797882891
+                }, 
+                {
+                 "height":1,
+                 "id":66,
+                 "name":"players4",
+                 "properties":[
+                        {
+                         "name":"default",
+                         "type":"int",
+                         "value":0
+                        }],
+                 "rotation":0,
+                 "type":"variable",
+                 "visible":true,
+                 "width":1,
+                 "x":973.319343791722,
+                 "y":425.580397882891
+                }, 
+                {
+                 "height":1,
+                 "id":67,
+                 "name":"pretendantInfos4",
+                 "rotation":0,
+                 "type":"variable",
+                 "visible":true,
+                 "width":1,
+                 "x":974.946343791722,
+                 "y":443.864397882891
                 }, 
                 {
                  "height":66.667,
-                 "id":61,
-                 "name":"playersPopup4",
-                 "rotation":0,
-                 "type":"area",
-                 "visible":true,
-                 "width":257,
-                 "x":702.5,
-                 "y":316.6665
-                }, 
-                {
-                 "height":57.3336666666666,
-                 "id":62,
+                 "id":68,
                  "name":"displayPretendantInfosPopup4",
                  "rotation":0,
                  "type":"area",
                  "visible":true,
                  "width":257,
-                 "x":542.833333333333,
-                 "y":450.6665
+                 "x":560.898636081835,
+                 "y":441.558006509609
+                }, 
+                {
+                 "height":66.667,
+                 "id":69,
+                 "name":"displayPretendantInfosPopup3",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":257,
+                 "x":563.378487290762,
+                 "y":153.895266274024
+                }, 
+                {
+                 "height":66.667,
+                 "id":70,
+                 "name":"displayPretendantInfosPopup2",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":257,
+                 "x":174.041847489151,
+                 "y":151.415415065096
                 }, 
                 {
                  "height":60.7308,
-                 "id":63,
+                 "id":71,
+                 "name":"showPlayer1",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":92.7163,
+                 "x":186.481863639182,
+                 "y":379.317103099814
+                }, 
+                {
+                 "height":60.7308,
+                 "id":72,
+                 "name":"displayPretendantInfosForPretendant1",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":92.7163,
+                 "x":190.733640452573,
+                 "y":382.02277265964
+                }, 
+                {
+                 "height":60.7308,
+                 "id":73,
+                 "name":"displayPretendantInfosForPretendant2",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":92.7163,
+                 "x":21.8906478904917,
+                 "y":76.6611239646347
+                }, 
+                {
+                 "height":60.7308,
+                 "id":74,
                  "name":"displayPretendantInfosForPretendant4",
                  "rotation":0,
                  "type":"area",
                  "visible":true,
                  "width":92.7163,
-                 "x":706.308516666667,
-                 "y":386.301266666667
+                 "x":707.186149978354,
+                 "y":383.934046480181
                 }, 
                 {
                  "height":60.7308,
-                 "id":64,
+                 "id":75,
                  "name":"showPlayer4",
                  "rotation":0,
                  "type":"area",
                  "visible":true,
                  "width":92.7163,
-                 "x":704.308516666667,
-                 "y":370.967933333333
+                 "x":709.502803920776,
+                 "y":381.922393047696
+                }, 
+                {
+                 "height":60.7308,
+                 "id":76,
+                 "name":"displayPretendantInfosForPretendant3",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":92.7163,
+                 "x":867.059233318026,
+                 "y":96.9619774734909
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1388,7 +1597,7 @@
          "y":0
         }],
  "nextlayerid":106,
- "nextobjectid":65,
+ "nextobjectid":77,
  "orientation":"orthogonal",
  "properties":[
         {
