@@ -39,6 +39,13 @@ WA.onInit()
       }
     });
 
+    WA.room.area.onEnter("reset").subscribe(() => {
+      WA.state.saveVariable("index1", 0);
+      WA.state.saveVariable("validatedIndex1", 0);
+      WA.state.saveVariable("players1", {});
+      WA.state.saveVariable("pretendantInfos1", {});
+    });
+
     WA.room.area.onEnter("displayPretendantInfosForPretendant1").subscribe(() => {
       const pretendantInfos1 = WA.state.loadVariable("pretendantInfos1");
       if (
