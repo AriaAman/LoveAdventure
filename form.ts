@@ -11,7 +11,7 @@ const email = document.getElementById("email") as HTMLInputElement;
 const age = document.getElementById("age") as HTMLInputElement;
 const gender = document.getElementById("gender") as HTMLInputElement;
 const searching = document.getElementById("searching") as HTMLInputElement;
-const indexPlayers1 = WA.state.loadVariable("indexPlayers1") as any;
+const indexPlayers1 = WA.state.loadVariable("indexPlayers1") ?? 0;
 
 WA.onInit()
   .then(() => {
