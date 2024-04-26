@@ -180,8 +180,11 @@ function openPopup() {
           callback: () => {
             WA.state.saveVariable("validatedIndex1", WA.state.loadVariable("index1"));
 
+            const players1 = WA.state.loadVariable("players1");
             const hasPlayers =
-              typeof WA.state.loadVariable("players1") === "object" && index1 in (WA.state.players as any);
+              typeof players1 === "object" &&
+              players1 !== null &&
+              Object.prototype.hasOwnProperty.call(players1, index1);
 
             if (hasPlayers) {
               const index = Number(WA.state.loadVariable("index1"));
