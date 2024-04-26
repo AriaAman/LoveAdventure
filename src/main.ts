@@ -44,6 +44,7 @@ WA.onInit()
       WA.state.saveVariable("validatedIndex1", 0);
       WA.state.saveVariable("players1", {});
       WA.state.saveVariable("pretendantInfos1", {});
+      WA.state.saveVariable("indexPlayers1", 0);
     });
 
     WA.room.area.onEnter("displayPretendantInfosForPretendant1").subscribe(() => {
@@ -73,6 +74,8 @@ WA.onInit()
         ]);
       }
     });
+
+    WA.room.area.onLeave("displayPretendantInfosForPretendant1").subscribe(closePopup);
 
     WA.room.area.onEnter("displayPretendantInfos1").subscribe(() => {
       console.log(WA.state.loadVariable("players1"));
