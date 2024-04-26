@@ -14,6 +14,7 @@ WA.onInit()
     WA.event.on("showValidatedPlayer").subscribe((event) => {
       console.log("Event received", event.data);
       const players1 = WA.state.loadVariable("players1");
+      const index1 = (WA.state.loadVariable("index1") as number) ?? 0;
       const playerName = players1[index1].firstName + players1[index1].lastName;
       WA.ui.openPopup("validatePlayerPopup1", `${playerName}, on y va ${event.data}!`, []);
     });
