@@ -24,6 +24,7 @@ WA.onInit()
     WA.ui.onRemotePlayerClicked.subscribe((remotePlayer) => {
       remotePlayer.addAction("Kick", () => {
         remotePlayer.sendEvent("teleport-event", "my payload");
+        timer.close();
       });
     });
 
@@ -145,10 +146,6 @@ WA.onInit()
           },
           allowApi: true,
         });
-      });
-
-      WA.room.area.onLeave("door-enter" + zone).subscribe(() => {
-        timer.close();
       });
 
       WA.room.area.onEnter("showPlayer" + zone).subscribe(() => {
