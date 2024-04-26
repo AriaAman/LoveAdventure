@@ -1589,6 +1589,17 @@
                  "width":92.7163,
                  "x":867.059233318026,
                  "y":96.9619774734909
+                }, 
+                {
+                 "height":32.1313,
+                 "id":77,
+                 "name":"resest",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":32,
+                 "x":479.07735583685,
+                 "y":450.882310618847
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1597,7 +1608,7 @@
          "y":0
         }],
  "nextlayerid":106,
- "nextobjectid":77,
+ "nextobjectid":78,
  "orientation":"orthogonal",
  "properties":[
         {

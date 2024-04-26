@@ -41,7 +41,9 @@ WA.onInit()
         }
       });
 
-      WA.room.area.onEnter("reset").subscribe(() => {});
+      WA.room.area.onEnter("reset").subscribe(() => {
+        WA.state.saveVariable("pretendantInfos1", {});
+      });
 
       WA.room.area.onEnter("displayPretendantInfosForPretendant" + zone).subscribe(() => {
         const pretendantInfos1 = WA.state.loadVariable("pretendantInfos" + zone);
