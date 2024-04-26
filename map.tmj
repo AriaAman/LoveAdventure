@@ -1150,11 +1150,6 @@
                          "name":"default",
                          "type":"int",
                          "value":0
-                        }, 
-                        {
-                         "name":"persist",
-                         "type":"bool",
-                         "value":false
                         }],
                  "rotation":0,
                  "type":"variable",
@@ -1172,11 +1167,6 @@
                          "name":"default",
                          "type":"int",
                          "value":0
-                        }, 
-                        {
-                         "name":"persist",
-                         "type":"bool",
-                         "value":true
                         }],
                  "rotation":0,
                  "type":"variable",
@@ -1194,11 +1184,6 @@
                          "name":"default",
                          "type":"int",
                          "value":0
-                        }, 
-                        {
-                         "name":"persist",
-                         "type":"bool",
-                         "value":false
                         }],
                  "rotation":0,
                  "type":"variable",
@@ -1249,11 +1234,6 @@
                          "name":"default",
                          "type":"int",
                          "value":0
-                        }, 
-                        {
-                         "name":"persist",
-                         "type":"bool",
-                         "value":true
                         }],
                  "rotation":0,
                  "type":"variable",
