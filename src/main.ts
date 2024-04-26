@@ -43,7 +43,7 @@ WA.onInit()
       const pretendantInfos1 = WA.state.loadVariable("pretendantInfos1");
       if (
         !WA.player.tags.includes("pretendant") ||
-        (pretendantInfos1 && typeof pretendantInfos1 === "object" && Object.keys(pretendantInfos1).length === 0)
+        (pretendantInfos1 && typeof pretendantInfos1 === "object" && Object.keys(pretendantInfos1).length !== 0)
       ) {
         console.log("Not a pretendant or already registered");
         return;
@@ -151,7 +151,7 @@ function openPopup() {
     currentPopup = WA.ui.openPopup(
       "playersPopup1",
 
-      displayNotes(WA.state.loadVariable("players1")[WA.state.loadVariable("index") as any]),
+      displayNotes(WA.state.loadVariable("players1")[WA.state.loadVariable("index1") as any]),
       [
         {
           label: "Validation",
