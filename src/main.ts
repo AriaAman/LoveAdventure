@@ -25,7 +25,11 @@ WA.onInit()
     WA.player.state.saveVariable("status", false);
 
     WA.event.on("showValidatedPlayer").subscribe((event) => {
-      WA.ui.openPopup("validatePlayerPopup", `${event.data}, on y va ${event.data.salle}!`, []);
+      const eventData: any = event.data;
+      const playerName: string = eventData.playerName;
+      const salle: string = eventData.salle;
+
+      WA.ui.openPopup("validatePlayerPopup", `${playerName}, on y va ${salle}!`, []);
     });
 
     //code pour zone 1
