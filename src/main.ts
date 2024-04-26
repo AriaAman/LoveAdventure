@@ -166,21 +166,20 @@ function openPopup() {
     return;
   }
   try {
+    const players1 = WA.state.loadVariable("players1");
     const index1 = (WA.state.loadVariable("index1") as number) ?? 0;
     console.log(index1);
 
     currentPopup = WA.ui.openPopup(
       "playersPopup1",
 
-      displayNotes(WA.state.loadVariable("players1")[index1]),
+      displayNotes(players1[index1]),
       [
         {
           label: "Validation",
           className: "primary",
           callback: () => {
-            WA.state.saveVariable("validatedIndex1", WA.state.loadVariable("index1"));
-
-            const players1 = WA.state.loadVariable("players1");
+            WA.state.saveVariable("validatedIndex1", index1);
             console.log(players1);
             const hasPlayers =
               typeof players1 === "object" &&
@@ -188,8 +187,7 @@ function openPopup() {
               Object.prototype.hasOwnProperty.call(players1, index1);
 
             if (hasPlayers) {
-              const index = Number(WA.state.loadVariable("index1"));
-              const playerName = WA.state.players[index].firstName + WA.state.players[index].lastName;
+              const playerName = WA.state.players[index1].firstName + WA.state.players[index1].lastName;
               WA.ui.openPopup("validatePlayerPopup1", `${playerName}, on y va !`, []);
             } else {
               WA.ui.openPopup("validatePlayerPopup1", "Il n'y a pas de prétendant(e)", []);

@@ -40,6 +40,7 @@ WA.onInit()
           WA.player.state.email = email.value;
           WA.player.state.age = age.value;
           WA.player.state.gender = gender.value;
+          WA.player.state.searching = searching.value;
 
           WA.state.saveVariable("players1", {
             ...(WA.state.loadVariable("players1") as Record<string, any>),
