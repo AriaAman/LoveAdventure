@@ -184,7 +184,7 @@ function openPopup(zone: string) {
   }
   try {
     const players = WA.state.loadVariable("players" + zone);
-    const index = (WA.state.loadVariable("index1") as number) ?? 0;
+    const index = (WA.state.loadVariable("index" + index) as number) ?? 0;
 
     currentPopup = WA.ui.openPopup(
       "playersPopup" + zone,
