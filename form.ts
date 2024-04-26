@@ -12,14 +12,12 @@ const age = document.getElementById("age") as HTMLInputElement;
 const gender = document.getElementById("gender") as HTMLInputElement;
 const searching = document.getElementById("searching") as HTMLInputElement;
 const zone = WA.player.state.loadVariable("zone");
-console.log("Zone:" + zone);
 
 const indexPlayers = (WA.state.loadVariable("indexPlayers" + zone) as number) ?? 0;
 
 WA.onInit()
   .then(() => {
-    console.log("Scripting API ready");
-    console.log(WA.state.players);
+    console.log("Zone:" + zone);
 
     saveButton.addEventListener("click", (e) => {
       if (firstName.value === "" || lastName.value === "" || email.value === "") {
