@@ -82,6 +82,8 @@ WA.onInit()
     WA.room.area.onLeave("displayPretendantInfosForPretendant1").subscribe(closePopup);
 
     WA.room.area.onEnter("displayPretendantInfos1").subscribe(() => {
+      console.log("onthebutton");
+
       try {
         if (WA.player.state.status == false || WA.player.state.status == undefined) {
           currentPopup = WA.ui.openPopup(
