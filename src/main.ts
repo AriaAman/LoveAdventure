@@ -122,6 +122,10 @@ WA.onInit()
     });
 
     WA.room.area.onEnter("door-enter1").subscribe(async () => {
+
+      if(WA.player.tags.includes("pretendant")){
+        return;
+      }
       timer = await WA.ui.website.open({
         url: "./timer.html",
         position: {
@@ -133,7 +137,7 @@ WA.onInit()
           width: "10vw",
         },
         margin: {
-          top: "8vh",
+          top: "25vh",
           left: "15vw",
         },
         allowApi: true,

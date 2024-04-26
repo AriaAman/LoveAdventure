@@ -4,7 +4,7 @@ const departMinutes = 1;
 let temps = departMinutes * 5;
 
 const timerElement = document.getElementById("timer");
-
+console.log("timerElement", timerElement);
 setInterval(() => {
   let minutes = parseInt(String(temps / 60), 10) as any;
   let secondes = parseInt(String(temps % 60), 10) as any;
@@ -17,11 +17,14 @@ setInterval(() => {
   }
 
   temps = temps <= 0 ? 0 : temps - 1;
+
   console.log(temps);
-  if (temps === 0) {
-    console.log("Temps écoulé");
-    WA.nav.goToRoom("#ejectZone");
-  }
-}, 1000);
+  }, 1000);
 
-
+  var id = setInterval(() => {
+    if (temps === 0) {
+      console.log("Temps écoulé");
+      clearInterval(id);
+      WA.nav.goToRoom("#ejectZone");
+    }
+  }, 1000);

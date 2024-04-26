@@ -920,15 +920,15 @@
                  "y":95.9345
                 }, 
                 {
-                 "height":35.1826367385515,
+                 "height":160.515970071885,
                  "id":24,
                  "name":"door-enter1",
                  "rotation":0,
                  "type":"area",
                  "visible":true,
-                 "width":32.9232751954635,
-                 "x":126.919398557639,
-                 "y":413.824933853829
+                 "width":225.58994186213,
+                 "x":31.5860652243057,
+                 "y":418.491600520496
                 }, 
                 {
                  "height":32.1313,
@@ -1281,6 +1281,17 @@
                  "width":32.4436,
                  "x":286.269303202847,
                  "y":510.06253202847
+                }, 
+                {
+                 "height":35.3333333333333,
+                 "id":53,
+                 "name":"dateZone",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":113,
+                 "x":35.8333333333333,
+                 "y":541.666666666666
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1289,7 +1300,7 @@
          "y":0
         }],
  "nextlayerid":106,
- "nextobjectid":53,
+ "nextobjectid":54,
  "orientation":"orthogonal",
  "properties":[
         {
