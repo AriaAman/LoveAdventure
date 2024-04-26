@@ -39,7 +39,12 @@ WA.onInit()
 
     //code pour zone 1
     zone("1");
+    //code pour zone 2
     zone("2");
+    //code pour zone 3
+    zone("3");
+    //code pour zone 4
+    zone("4");
 
     //fonction pour les zones
     function zone(zone: string) {
