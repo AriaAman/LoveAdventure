@@ -54,10 +54,10 @@ WA.onInit()
       });
 
       WA.room.area.onEnter("displayPretendantInfosForPretendant" + zone).subscribe(() => {
-        const pretendantInfos1 = WA.state.loadVariable("pretendantInfos" + zone);
+        const pretendantInfos = WA.state.loadVariable("pretendantInfos" + zone);
         if (
           !WA.player.tags.includes("pretendant") ||
-          (pretendantInfos1 && typeof pretendantInfos1 === "object" && Object.keys(pretendantInfos1).length !== 0)
+          (pretendantInfos && typeof pretendantInfos === "object" && Object.keys(pretendantInfos).length !== 0)
         ) {
           return;
         }
@@ -221,7 +221,7 @@ function openPopup(zone: string) {
       ]
     );
   } catch (e) {
-    currentPopup = WA.ui.openPopup("playersPopup1", "Il n'y a pas de prétendant(e)", []);
+    currentPopup = WA.ui.openPopup("playersPopup" + zone, "Il n'y a pas de prétendant(e)", []);
   }
 }
 
