@@ -24,8 +24,7 @@ WA.onInit()
       } else {
         alert("Inscription réussie");
         if (WA.player.tags.includes("pretendant")) {
-          // a changer par "pretendant"
-          WA.state.saveVariable("pretendantInfos", {
+          WA.state.saveVariable("pretendantInfos1", {
             firstName: firstName.value,
             lastName: lastName.value,
             age: phone.value,
@@ -41,10 +40,10 @@ WA.onInit()
           WA.player.state.email = email.value;
           WA.player.state.age = age.value;
           WA.player.state.gender = gender.value;
-        WA.state.saveVariable("indexPlayers", indexPlayers + 1);
+          WA.state.saveVariable("indexPlayers1", indexPlayers + 1);
         }
-        
-        WA.state.saveVariable("indexPlayers", indexPlayers + 1);
+
+        WA.state.saveVariable("indexPlayers1", indexPlayers + 1);
         WA.controls.restorePlayerControls();
         e.preventDefault();
       }
