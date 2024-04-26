@@ -11,8 +11,8 @@ const email = document.getElementById("email") as HTMLInputElement;
 const age = document.getElementById("age") as HTMLInputElement;
 const gender = document.getElementById("gender") as HTMLInputElement;
 const searching = document.getElementById("searching") as HTMLInputElement;
-const indexPlayers = WA.state.loadVariable("indexPlayers") as number;
-// Waiting for the API to be ready
+const indexPlayers1 = WA.state.loadVariable("indexPlayers1") as number;
+
 WA.onInit()
   .then(() => {
     console.log("Scripting API ready");
@@ -40,10 +40,24 @@ WA.onInit()
           WA.player.state.email = email.value;
           WA.player.state.age = age.value;
           WA.player.state.gender = gender.value;
-          WA.state.saveVariable("indexPlayers1", indexPlayers + 1);
+
+          WA.state.saveVariable("players", {
+            ...(WA.state.loadVariable("players") as Record<string, any>),
+            [indexPlayers1]: {
+              firstName: WA.player.state.firstName,
+              lastName: WA.player.state.lastName,
+              age: WA.player.state.age,
+              gender: WA.player.state.gender,
+              searching: WA.player.state.searching,
+              email: WA.player.state.email,
+              phone: WA.player.state.phone,
+            },
+          });
+
+          WA.state.saveVariable("indexPlayers1", indexPlayers1 + 1);
+          console.log(WA.state.players);
         }
 
-        WA.state.saveVariable("indexPlayers1", indexPlayers + 1);
         WA.controls.restorePlayerControls();
         e.preventDefault();
       }
