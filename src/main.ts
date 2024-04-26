@@ -11,7 +11,12 @@ let timer: any = undefined;
 WA.onInit()
   .then(async () => {
     await WA.players.configureTracking();
-    console.log("tags= " + WA.player.tags);
+    WA.event.on("showValidatedPlayer").subscribe((event) => {
+      console.log("Event received", event.data);
+      const players1 = WA.state.loadVariable("players1");
+      const playerName = players1[index1].firstName + players1[index1].lastName;
+      WA.ui.openPopup("validatePlayerPopup1", `${playerName}, on y va ${event.data}!`, []);
+    });
 
     WA.event.on("teleport-event").subscribe((event) => {
       console.log("Event received", event.data);
@@ -170,7 +175,6 @@ function openPopup() {
   try {
     const players1 = WA.state.loadVariable("players1");
     const index1 = (WA.state.loadVariable("index1") as number) ?? 0;
-    console.log(index1);
 
     currentPopup = WA.ui.openPopup(
       "playersPopup1",
@@ -182,15 +186,13 @@ function openPopup() {
           className: "primary",
           callback: () => {
             WA.state.saveVariable("validatedIndex1", index1);
-            console.log(players1);
             const hasPlayers =
               typeof players1 === "object" &&
               players1 !== null &&
               Object.prototype.hasOwnProperty.call(players1, index1);
 
             if (hasPlayers) {
-              const playerName = players1[index1].firstName + players1[index1].lastName;
-              WA.ui.openPopup("validatePlayerPopup1", `${playerName}, on y va !`, []);
+              WA.event.broadcast("showValidatedPlayer", "salle 1");
             } else {
               WA.ui.openPopup("validatePlayerPopup1", "Il n'y a pas de prétendant(e)", []);
             }
