@@ -10,10 +10,6 @@ let timer: any = undefined;
 
 WA.onInit()
   .then(async () => {
-    console.log(WA.state.loadVariable("pretendantInfos" + 1));
-    console.log(WA.state.loadVariable("pretendantInfos" + 2));
-    console.log(WA.state.loadVariable("pretendantInfos" + 3));
-    console.log(WA.state.loadVariable("pretendantInfos" + 4));
 
     //code pour toutes les zones de rencontre
     await WA.players.configureTracking();
@@ -22,10 +18,12 @@ WA.onInit()
     });
 
     WA.ui.onRemotePlayerClicked.subscribe((remotePlayer) => {
-      remotePlayer.addAction("Kick", () => {
-        remotePlayer.sendEvent("teleport-event", "my payload");
-        timer.close();
-      });
+      if(WA.player.tags.includes("pretendant")) {
+        remotePlayer.addAction("Kick", () => {
+          remotePlayer.sendEvent("teleport-event", "my payload");
+          timer.close();
+        });
+      }
     });
 
     WA.player.state.saveVariable("status", false);
