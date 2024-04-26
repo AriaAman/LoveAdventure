@@ -1146,6 +1146,100 @@
                  "width":35,
                  "x":829.5,
                  "y":512.93435
+                }, 
+                {
+                 "height":1,
+                 "id":42,
+                 "name":"players",
+                 "properties":[
+                        {
+                         "name":"persist",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"variable",
+                 "visible":true,
+                 "width":1,
+                 "x":146.28245,
+                 "y":11.859855
+                }, 
+                {
+                 "height":1,
+                 "id":43,
+                 "name":"indexPlayers",
+                 "properties":[
+                        {
+                         "name":"default",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"persist",
+                         "type":"bool",
+                         "value":false
+                        }],
+                 "rotation":0,
+                 "type":"variable",
+                 "visible":true,
+                 "width":1,
+                 "x":54.63045,
+                 "y":14.526525
+                }, 
+                {
+                 "height":1,
+                 "id":44,
+                 "name":"index",
+                 "properties":[
+                        {
+                         "name":"default",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"persist",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"variable",
+                 "visible":true,
+                 "width":1,
+                 "x":97.29745,
+                 "y":13.859855
+                }, 
+                {
+                 "height":1,
+                 "id":45,
+                 "name":"validatedIndex",
+                 "properties":[
+                        {
+                         "name":"default",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"persist",
+                         "type":"bool",
+                         "value":false
+                        }],
+                 "rotation":0,
+                 "type":"variable",
+                 "visible":true,
+                 "width":1,
+                 "x":12.28055,
+                 "y":11.722723
+                }, 
+                {
+                 "height":1,
+                 "id":46,
+                 "name":"pretendantInfos",
+                 "rotation":0,
+                 "type":"variable",
+                 "visible":true,
+                 "width":1,
+                 "x":199.71945,
+                 "y":11.473475
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1154,7 +1248,7 @@
          "y":0
         }],
  "nextlayerid":106,
- "nextobjectid":42,
+ "nextobjectid":47,
  "orientation":"orthogonal",
  "properties":[
         {
