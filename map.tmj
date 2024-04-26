@@ -933,8 +933,8 @@
                  "type":"area",
                  "visible":true,
                  "width":32.9232751954635,
-                 "x":127.728198298823,
-                 "y":415.442533336197
+                 "x":126.919398557639,
+                 "y":413.824933853829
                 }, 
                 {
                  "height":32.1313,
@@ -1038,7 +1038,7 @@
                 {
                  "height":60.7307823681656,
                  "id":34,
-                 "name":"showPlayers1",
+                 "name":"showPlayer1",
                  "rotation":0,
                  "type":"area",
                  "visible":true,
@@ -1146,23 +1146,6 @@
                  "width":35,
                  "x":829.5,
                  "y":512.93435
-                }, 
-                {
-                 "height":0,
-                 "id":42,
-                 "name":"players",
-                 "properties":[
-                        {
-                         "name":"persist",
-                         "type":"bool",
-                         "value":true
-                        }],
-                 "rotation":0,
-                 "type":"variable",
-                 "visible":true,
-                 "width":0,
-                 "x":1,
-                 "y":1
                 }, 
                 {
                  "height":1,

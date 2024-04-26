@@ -11,6 +11,7 @@ let timer: any = undefined;
 WA.onInit()
   .then(async () => {
     await WA.players.configureTracking();
+    console.log("tags= " + WA.player.tags);
 
     WA.event.on("teleport-event").subscribe((event) => {
       console.log("Event received", event.data);
@@ -39,7 +40,11 @@ WA.onInit()
     });
 
     WA.room.area.onEnter("displayPretendantInfosForPretendant1").subscribe(() => {
-      if (!WA.player.tags.includes("pretendant") || WA.state.loadVariable("pretendantInfos1")) {
+      if (
+        !WA.player.tags.includes("pretendant") ||
+        Object.keys(WA.state.loadVariable("pretendantInfos1")).length !== 0
+      ) {
+        console.log("Not a pretendant or already registered");
         return;
       }
       try {
@@ -108,7 +113,6 @@ WA.onInit()
 
     WA.room.area.onEnter("showPlayer1").subscribe(() => {
       openPopup();
-      console.log(WA.state.loadVariable("index1"), WA.player.state.loadVariable("id"));
     });
 
     WA.room.area.onLeave("showPlayer1").subscribe(closePopup);
