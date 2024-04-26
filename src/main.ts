@@ -68,6 +68,8 @@ WA.onInit()
     });
 
     WA.room.area.onEnter("displayPretendantInfos1").subscribe(() => {
+      console.log(WA.state.loadVariable("players1"));
+
       try {
         currentPopup = WA.ui.openPopup(
           "displayPretendantInfosPopup1",
