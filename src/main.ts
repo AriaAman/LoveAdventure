@@ -89,12 +89,6 @@ WA.onInit()
           currentPopup = WA.ui.openPopup(
             "displayPretendantInfosPopup1",
             displayNotes(WA.state.loadVariable("pretendantInfos1") as any),
-            []
-          );
-        } else {
-          currentPopup = WA.ui.openPopup(
-            "displayPretendantInfosPopup1",
-            displayNotes(WA.state.loadVariable("pretendantInfos1") as any),
             [
               {
                 label: "Inscription salle 1",
@@ -104,6 +98,12 @@ WA.onInit()
                 },
               },
             ]
+          );
+        } else {
+          currentPopup = WA.ui.openPopup(
+            "displayPretendantInfosPopup1",
+            displayNotes(WA.state.loadVariable("pretendantInfos1") as any),
+            []
           );
         }
       } catch (e) {
