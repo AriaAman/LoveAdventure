@@ -83,19 +83,27 @@ WA.onInit()
 
     WA.room.area.onEnter("displayPretendantInfos1").subscribe(() => {
       try {
-        currentPopup = WA.ui.openPopup(
-          "displayPretendantInfosPopup1",
-          displayNotes(WA.state.loadVariable("pretendantInfos1") as any),
-          [
-            {
-              label: "Inscription salle 1",
-              className: "primary",
-              callback: async () => {
-                registration();
+        if (WA.player.state.status == false || WA.player.state.status == undefined) {
+          currentPopup = WA.ui.openPopup(
+            "displayPretendantInfosPopup1",
+            displayNotes(WA.state.loadVariable("pretendantInfos1") as any),
+            []
+          );
+        } else {
+          currentPopup = WA.ui.openPopup(
+            "displayPretendantInfosPopup1",
+            displayNotes(WA.state.loadVariable("pretendantInfos1") as any),
+            [
+              {
+                label: "Inscription salle 1",
+                className: "primary",
+                callback: async () => {
+                  registration();
+                },
               },
-            },
-          ]
-        );
+            ]
+          );
+        }
       } catch (e) {
         currentPopup = WA.ui.openPopup("displayPretendantInfosPopup1", "Infos pas encore disponibles", []);
       }
