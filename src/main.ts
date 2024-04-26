@@ -30,6 +30,7 @@ WA.onInit()
 
     //code pour zone 1
     zone("1");
+    zone("2");
 
     //fonction pour les zones
     function zone(zone: string) {
