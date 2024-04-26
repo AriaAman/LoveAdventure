@@ -22,7 +22,7 @@ WA.onInit()
     WA.ui.onRemotePlayerClicked.subscribe((remotePlayer) => {
         console.log("Le joueur distant a été cliqué:", remotePlayer)
     
-        remotePlayer.addAction('Téléportation', () => {
+        remotePlayer.addAction('Kick', () => {
             remotePlayer.sendEvent("teleport-event", "my payload");
         }); 
     });
@@ -128,7 +128,6 @@ WA.onInit()
       timer.close();
     });
 
-    //code Nicolas
     WA.room.area.onEnter("showPlayer").subscribe(() => {
       openPopup();
       console.log(WA.state.loadVariable("index"), WA.player.state.loadVariable("id"));
