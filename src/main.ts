@@ -181,6 +181,7 @@ function openPopup() {
             WA.state.saveVariable("validatedIndex1", WA.state.loadVariable("index1"));
 
             const players1 = WA.state.loadVariable("players1");
+            console.log(players1);
             const hasPlayers =
               typeof players1 === "object" &&
               players1 !== null &&
