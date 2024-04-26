@@ -182,6 +182,8 @@ function openPopup(zone: string) {
   if (!WA.player.tags.includes("pretendant")) {
     return;
   }
+  console.log("Zone:" + zone);
+
   try {
     const players = WA.state.loadVariable("players" + zone);
     const index = (WA.state.loadVariable("index" + zone) as number) ?? 0;
