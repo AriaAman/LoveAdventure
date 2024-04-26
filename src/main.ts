@@ -68,7 +68,7 @@ WA.onInit()
               label: "Inscription",
               className: "primary",
               callback: async () => {
-                registration();
+                registration(zone);
               },
             },
           ]);
@@ -88,7 +88,7 @@ WA.onInit()
                   label: "Inscription salle " + zone,
                   className: "primary",
                   callback: async () => {
-                    registration();
+                    registration(zone);
                   },
                 },
               ]
@@ -233,9 +233,10 @@ function displayNotes(player: { firstName: string; lastName: string; age: string
   );
 }
 
-async function registration() {
+async function registration(zone: string) {
   if (WA.player.state.status == false || WA.player.state.status == undefined) {
     WA.controls.disablePlayerControls();
+    WA.player.state.saveVariable("zone", zone);
 
     formWebsite = await WA.ui.website.open({
       url: "./form.html",

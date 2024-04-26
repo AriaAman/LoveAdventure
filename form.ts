@@ -11,7 +11,8 @@ const email = document.getElementById("email") as HTMLInputElement;
 const age = document.getElementById("age") as HTMLInputElement;
 const gender = document.getElementById("gender") as HTMLInputElement;
 const searching = document.getElementById("searching") as HTMLInputElement;
-const indexPlayers1 = WA.state.loadVariable("indexPlayers1") ?? 0;
+const zone = WA.player.state.loadVariable("zone");
+const indexPlayers = (WA.state.loadVariable("indexPlayers" + zone) as number) ?? 0;
 
 WA.onInit()
   .then(() => {
@@ -24,7 +25,7 @@ WA.onInit()
       } else {
         alert("Inscription réussie");
         if (WA.player.tags.includes("pretendant")) {
-          WA.state.saveVariable("pretendantInfos1", {
+          WA.state.saveVariable("pretendantInfos" + zone, {
             firstName: firstName.value,
             lastName: lastName.value,
             age: phone.value,
@@ -41,11 +42,11 @@ WA.onInit()
           WA.player.state.age = age.value;
           WA.player.state.gender = gender.value;
           WA.player.state.searching = searching.value;
-          WA.player.state.id = indexPlayers1;
+          WA.player.state.id = indexPlayers;
 
-          WA.state.saveVariable("players1", {
-            ...(WA.state.loadVariable("players1") as Record<string, any>),
-            [indexPlayers1]: {
+          WA.state.saveVariable("players" + zone, {
+            ...(WA.state.loadVariable("players" + zone) as Record<string, any>),
+            [indexPlayers]: {
               firstName: WA.player.state.firstName,
               lastName: WA.player.state.lastName,
               age: WA.player.state.age,
@@ -56,7 +57,7 @@ WA.onInit()
             },
           });
 
-          WA.state.saveVariable("indexPlayers1", indexPlayers1 + 1);
+          WA.state.saveVariable("indexPlayers" + zone, indexPlayers + 1);
           console.log(WA.state.players);
         }
 
