@@ -10,6 +10,11 @@ let timer: any = undefined;
 
 WA.onInit()
   .then(async () => {
+    console.log(WA.state.loadVariable("pretendantInfos" + 1));
+    console.log(WA.state.loadVariable("pretendantInfos" + 2));
+    console.log(WA.state.loadVariable("pretendantInfos" + 3));
+    console.log(WA.state.loadVariable("pretendantInfos" + 4));
+
     //code pour toutes les zones de rencontre
     await WA.players.configureTracking();
     WA.event.on("teleport-event").subscribe(() => {
@@ -223,6 +228,7 @@ function openPopup(zone: string) {
 function displayNotes(player: { firstName: string; lastName: string; age: string; gender: string; searching: string }) {
   return (
     player.firstName +
+    " " +
     player.lastName +
     ", " +
     player.age +
