@@ -41,8 +41,8 @@ WA.onInit()
           WA.player.state.age = age.value;
           WA.player.state.gender = gender.value;
 
-          WA.state.saveVariable("players", {
-            ...(WA.state.loadVariable("players") as Record<string, any>),
+          WA.state.saveVariable("players1", {
+            ...(WA.state.loadVariable("players1") as Record<string, any>),
             [indexPlayers1]: {
               firstName: WA.player.state.firstName,
               lastName: WA.player.state.lastName,
