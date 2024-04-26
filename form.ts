@@ -12,6 +12,8 @@ const age = document.getElementById("age") as HTMLInputElement;
 const gender = document.getElementById("gender") as HTMLInputElement;
 const searching = document.getElementById("searching") as HTMLInputElement;
 const zone = WA.player.state.loadVariable("zone");
+console.log("Zone:" + zone);
+
 const indexPlayers = (WA.state.loadVariable("indexPlayers" + zone) as number) ?? 0;
 
 WA.onInit()
