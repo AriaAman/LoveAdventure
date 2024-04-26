@@ -1026,7 +1026,7 @@
                  "type":"area",
                  "visible":true,
                  "width":92.7162730507926,
-                 "x":867.447094445712,
+                 "x":865.42348567674,
                  "y":98.2136854754251
                 }, 
                 {
@@ -1206,7 +1206,7 @@
                 {
                  "height":60.7308,
                  "id":48,
-                 "name":"displayPretendantInfosForPretendant2",
+                 "name":"showPlayers2",
                  "rotation":0,
                  "type":"area",
                  "visible":true,
@@ -1554,8 +1554,8 @@
                  "type":"area",
                  "visible":true,
                  "width":92.7163,
-                 "x":21.8906478904917,
-                 "y":76.6611239646347
+                 "x":32.6832279916721,
+                 "y":96.897211654348
                 }, 
                 {
                  "height":60.7308,
