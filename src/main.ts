@@ -34,6 +34,8 @@ WA.onInit()
     });
 
     WA.room.area.onEnter("to-date1").subscribe(() => {
+      console.log(WA.state.loadVariable("validatedIndex1"), WA.player.state.loadVariable("id"));
+
       if (WA.state.loadVariable("validatedIndex1") === WA.player.state.loadVariable("id")) {
         WA.nav.goToRoom("#from-queue1");
       }
