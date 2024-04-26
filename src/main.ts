@@ -146,6 +146,7 @@ String.prototype.capitalize = function () {
 };
 
 function openPopup() {
+  console.log({WA.state.loadVariable("players1"), WA.state.loadVariable("index1"),  WA.state.loadVariable('validatedIndex1'), WA.state.loadVariable('pretendantInfos1')});
   if (!WA.player.tags.includes("pretendant")) {
     return;
   }
