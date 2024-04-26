@@ -148,7 +148,7 @@ function openPopup() {
   }
   try {
     currentPopup = WA.ui.openPopup(
-      "playersPopup",
+      "playersPopup1",
 
       displayNotes(WA.state.loadVariable("players1")[WA.state.loadVariable("index") as any]),
       [
@@ -165,9 +165,9 @@ function openPopup() {
             if (hasPlayers) {
               const index = Number(WA.state.loadVariable("index1"));
               const playerName = WA.state.players[index].firstName + WA.state.players[index].lastName;
-              WA.ui.openPopup("validatePlayerPopup", `${playerName}, on y va !`, []);
+              WA.ui.openPopup("validatePlayerPopup1", `${playerName}, on y va !`, []);
             } else {
-              WA.ui.openPopup("validatePlayerPopup", "Il n'y a pas de prétendant(e)", []);
+              WA.ui.openPopup("validatePlayerPopup1", "Il n'y a pas de prétendant(e)", []);
             }
           },
         },
@@ -186,7 +186,7 @@ function openPopup() {
       ]
     );
   } catch (e) {
-    currentPopup = WA.ui.openPopup("playersPopup", "Il n'y a pas de prétendant(e)", []);
+    currentPopup = WA.ui.openPopup("playersPopup1", "Il n'y a pas de prétendant(e)", []);
   }
 }
 
