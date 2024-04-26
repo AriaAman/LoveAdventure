@@ -187,7 +187,7 @@ function openPopup() {
               Object.prototype.hasOwnProperty.call(players1, index1);
 
             if (hasPlayers) {
-              const playerName = WA.state.players[index1].firstName + WA.state.players[index1].lastName;
+              const playerName = players1[index1].firstName + players1[index1].lastName;
               WA.ui.openPopup("validatePlayerPopup1", `${playerName}, on y va !`, []);
             } else {
               WA.ui.openPopup("validatePlayerPopup1", "Il n'y a pas de prétendant(e)", []);
