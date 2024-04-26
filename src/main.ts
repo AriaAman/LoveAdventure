@@ -35,10 +35,6 @@ WA.onInit()
     //WA.player.state.saveVariable("id", 2);
     WA.player.state.saveVariable("status", false);
 
-    WA.room.area.onEnter("registrationArea").subscribe(async () => {
-      registration();
-    });
-
     WA.room.area.onEnter("to-date1").subscribe(() => {
       console.log(WA.state.loadVariable("validatedIndex1"), WA.player.state.loadVariable("id"));
 
@@ -86,13 +82,19 @@ WA.onInit()
     WA.room.area.onLeave("displayPretendantInfosForPretendant1").subscribe(closePopup);
 
     WA.room.area.onEnter("displayPretendantInfos1").subscribe(() => {
-      console.log(WA.state.loadVariable("players1"));
-
       try {
         currentPopup = WA.ui.openPopup(
           "displayPretendantInfosPopup1",
           displayNotes(WA.state.loadVariable("pretendantInfos1") as any),
-          []
+          [
+            {
+              label: "Inscription salle 1",
+              className: "primary",
+              callback: async () => {
+                registration();
+              },
+            },
+          ]
         );
       } catch (e) {
         currentPopup = WA.ui.openPopup("displayPretendantInfosPopup1", "Infos pas encore disponibles", []);
@@ -101,7 +103,7 @@ WA.onInit()
 
     WA.room.area.onLeave("displayPretendantInfos1").subscribe(closePopup);
 
-    WA.room.area.onLeave("registrationArea").subscribe(() => {
+    WA.room.area.onLeave("displayPretendantInfos1").subscribe(() => {
       formWebsite.close();
     });
 
@@ -233,7 +235,6 @@ function displayNotes(player: { firstName: string; lastName: string; age: string
 async function registration() {
   if (WA.player.state.status == false || WA.player.state.status == undefined) {
     WA.controls.disablePlayerControls();
-    console.log("Entering visibleNote layer");
 
     formWebsite = await WA.ui.website.open({
       url: "./form.html",
