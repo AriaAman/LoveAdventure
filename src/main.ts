@@ -2,7 +2,7 @@
 
 import { bootstrapExtra } from "@workadventure/scripting-api-extra";
 
-console.log("Script started successfully");
+
 
 let currentPopup: any = undefined;
 let formWebsite: any = undefined;
@@ -10,6 +10,7 @@ let timer: any = undefined;
 
 WA.onInit()
   .then(async () => {
+    console.log("Script started successfully 22222");
 
     //code pour toutes les zones de rencontre
     await WA.players.configureTracking();
@@ -129,7 +130,7 @@ WA.onInit()
           return;
         }
         timer = await WA.ui.website.open({
-          url: "./timer.html",
+          url: "./../timer.html",
           position: {
             vertical: "top",
             horizontal: "middle",
